@@ -1,13 +1,193 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  color: #fff;
+  background-color: #012B37;
+  font-family: 'Inter', sans-serif;
+}
+
+.LogoWrapper {
+  margin: 1em 1.5em;
+}
+
+.Logo {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.SearchWrapper {
+  width: 100%;
+  margin: 5em auto 0 auto;
+  display: grid;
+  justify-content: center;
+}
+
+.SearchContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.SearchBarLabel {
+  margin-bottom: 0.5em;
+  font-size: .8em;
+  margin-left: 1.5em;
+  font-weight: 500;
+}
+
+#SearchBar {
+  background-color: rgb(255, 255, 255, 0.08);
+  padding: .75em;
+  border-radius: 15px;
+  border: none;
+  color: #FFFFFF;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.74);
+  min-width: 600px;
+  font-size: 1.25em;
+}
+
+#SearchBar::placeholder {
+  color: rgb(255, 255, 255, 0.5);
+  font-size: 1.25em;
+  letter-spacing: 0.05rem;
+}
+
+.CheckboxContainer {
+  margin-top: 0.75em;
+  margin-left: 1em;
+}
+
+.CheckboxLabel {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 1.75em;
+  font-size: 15px;
+}
+
+.CheckboxLabel #CheckboxShipOrders {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.Checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #fff;
+}
+
+.CheckboxLabel:hover #CheckboxShipOrders ~ .Checkmark {
+  background-color: #fff;
+}
+
+.CheckboxLabel #CheckboxShipOrders:checked ~ .Checkmark {
+  background-color: #B54139;
+}
+
+.Checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.CheckboxLabel #CheckboxShipOrders:checked ~ .Checkmark:after {
+  display: block;
+}
+
+.CheckboxLabel .Checkmark:after {
+  left: 7.5px;
+  top: 1px;
+  width: 2.5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.OrdersWrapper {
+  width: 100%;
+  margin: 2em auto;
+  display: grid;
+  justify-content: center;
+}
+
+
+.OrdersList {
+  display: flex;
+  flex-direction: column;
+}
+
+.OrdersListItem {
+  display: flex;
+  flex-direction: row;
+  margin: 2em auto;
+}
+
+.OrdersListItemFigure {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1.5em;
+}
+
+.OrdersListItemFigure:first-child, .OrdersListItemFigure:last-child {
+  margin: auto 1.5em;
+} 
+
+.OrdersListItemFigure:first-child {
+  color: rgb(255, 255, 255, .5);
+  font-size: 2em;
+}
+
+.OrdersListItemFigure:last-child button {
+  color: #FFFFFF;
+  background: #B54139;
+  border: none;
+  padding: .75em;
+  border-radius: 20px;
+  min-width: 150px;
+  font-size: 1em;
+}
+
+.OrdersListItemFigure h2 {
+  color: #B54139;
+  margin-bottom: .5em;
+  font-size: 1em;
+}
+
+@media only screen and (max-width: 800px) {
+  .OrdersListItem {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .OrdersListItemFigure {
+    margin: .75em auto;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .LogoWrapper {
+    text-align: center;
+  }
+
+  #SearchBar {
+    min-width: 200px;
+  }
 }
