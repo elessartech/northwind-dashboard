@@ -13,6 +13,6 @@ interface OrderWithProductsAsList extends Omit<Order, "OrderID"|"ProductName"> {
   Products: string[];
 }
 
-export interface FormattedOrder {
+export interface FormattedOrders {
   [OrderID: string]: OrderWithProductsAsList;
 }

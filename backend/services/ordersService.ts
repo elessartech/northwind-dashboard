@@ -1,7 +1,7 @@
-import { Order, FormattedOrder } from "../types";
+import { Order, FormattedOrders } from "../types";
 
-const modifyOrderDataObj = (allOrders: Order[]): FormattedOrder => {
-  const dataObj: FormattedOrder = {};
+const modifyOrderDataObj = (allOrders: Order[]): FormattedOrders => {
+  const dataObj: FormattedOrders = {};
   allOrders.forEach((order: Order) => {
     if (dataObj.hasOwnProperty(order.OrderID)) {
       dataObj[order.OrderID].Products.push(order.ProductName);

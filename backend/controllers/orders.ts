@@ -11,12 +11,20 @@ router.get("/", async (_req: Request, res: Response) => {
   res.json(modifiedOrderDataObj);
 });
 
-router.get("/search", async (req: { query: { productName: string } }, res: Response) => {
-  const productNameParam = req.query.productName;
-  const allOrders = await orderModel.searchOrdersByProductName(
-    productNameParam
-  );
-  const modifiedOrderDataObj = ordersService.modifyOrderDataObj(allOrders);
+router.get("/search", async (req: any, res: Response) => {
+  const productName = req.query.productName;
+  const shipped = JSON.parse(req.query.shipped);
+  let orders;
+  if (shipped) {
+    orders = await orderModel.searchOnlyShippedOrdersByProductName(
+      productName
+    );
+  } else {
+    orders = await orderModel.searchAllOrdersByProductName(
+      productName
+    );
+  }
+  const modifiedOrderDataObj = ordersService.modifyOrderDataObj(orders);
   res.json(modifiedOrderDataObj);
 });
 
