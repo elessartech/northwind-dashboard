@@ -1,8 +1,8 @@
-interface OrderWithProductsAsList {
-    ShipAddress: string;
-    ContactName: string;
-    Products: string[];
-    OrderDate: string;
+export interface OrderWithProductsAsList {
+    ShipAddress?: string;
+    ContactName?: string;
+    Products?: string[];
+    OrderDate?: string;
     ShippedDate?: string;
 }
 

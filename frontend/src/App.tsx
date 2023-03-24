@@ -6,7 +6,7 @@ import { Order } from './types';
 import axios from 'axios';
 
 function App() {
-  const [, dispatch] = useStateValue();
+  const [state, dispatch] = useStateValue();
   React.useEffect(() => {
     void axios.get<void>(`${apiBaseUrl}/ping`);
 
@@ -22,6 +22,7 @@ function App() {
     };
     void fetchOrdersList();
   }, [dispatch]);
+  console.log(state)
   return (
     <div className="App">
       <OrdersPage />

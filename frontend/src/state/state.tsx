@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { Order } from "../types";
+import { OrderWithProductsAsList } from "../types";
 
 import { Action } from "./reducer";
 
 export type State = {
-  orders: Order[];
+  orders: OrderWithProductsAsList;
 };
 
 const initialState: State = {
-  orders: []
+  orders: {}
 };
 
 export const StateContext = createContext<[State, React.Dispatch<Action>]>([
