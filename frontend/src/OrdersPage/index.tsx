@@ -1,8 +1,11 @@
 import React from "react";
+import { useStateValue } from "../state";
 
 
 const OrdersPage = () => {
-    return (
+  const [{ orders }] = useStateValue();
+  console.log(orders)
+  return (
         <section className='Wrapper'>
           <header className='LogoWrapper'>
             <span className='Logo'>Northwind</span>
@@ -22,56 +25,37 @@ const OrdersPage = () => {
             </section>
             <section className='OrdersWrapper'>
               <ul className='OrdersList'>
-                <li className='OrdersListItem'>
-                  <figure className='OrdersListItemFigure'>
-                    <span>#1</span>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <h2>Shipping address</h2>
-                    <p>59 rue de l-Abbaye</p>
-                    <p>Reims 51100</p>
-                    <p>France</p>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <h2>Customer name</h2>
-                    <p>Maria Anders</p>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <h2>Products</h2>
-                    <p>Chef Antons Cajun Seasoning</p>
-                    <p>Chef Antons Cajun Seasoning</p>
-                    <p>Chef Antons Cajun Seasoning</p>
-                    <p>+ 4 more...</p>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <button>View Details</button>
-                  </figure>
-                </li>
-                <li className='OrdersListItem'>
-                  <figure className='OrdersListItemFigure'>
-                    <span>#2</span>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <h2>Shipping address</h2>
-                    <p>59 rue de l-Abbaye</p>
-                    <p>Reims 51100</p>
-                    <p>France</p>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <h2>Customer name</h2>
-                    <p>Maria Anders</p>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <h2>Products</h2>
-                    <p>Chef Antons Cajun Seasoning</p>
-                    <p>Chef Antons Cajun Seasoning</p>
-                    <p>Chef Antons Cajun Seasoning</p>
-                    <p>+ 4 more...</p>
-                  </figure>
-                  <figure className='OrdersListItemFigure'>
-                    <button>View Details</button>
-                  </figure>
-                </li>
+                {
+                  Object.entries(orders).map((orderEntries: any) => {
+                    const orderId = orderEntries[0]
+                    const order = orderEntries[1]
+                    const orderIdHref = 'order/'.concat(orderId)
+                    return (
+                      <li className='OrdersListItem'>
+                        <figure className='OrdersListItemFigure'>
+                          <span>#{orderId}</span>
+                        </figure>
+                        <figure className='OrdersListItemFigure'>
+                          <h2>Shipping address</h2>
+                          <p>{order.ShipAddress}</p>
+                        </figure>
+                        <figure className='OrdersListItemFigure'>
+                          <h2>Customer name</h2>
+                          <p>{order.ContactName}</p>
+                        </figure>
+                        <figure className='OrdersListItemFigure'>
+                          <h2>Products</h2>
+                          {order.Products.map((product: string) => (
+                            <p>{product}</p>
+                          ))}
+                        </figure>
+                        <figure className='OrdersListItemFigure'>
+                          <a href={orderIdHref}>View Details</a>
+                        </figure>
+                      </li>
+                    )
+                  })
+                }
               </ul>
             </section>
           </main>

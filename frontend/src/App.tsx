@@ -6,10 +6,8 @@ import { Order } from './types';
 import axios from 'axios';
 
 function App() {
-  const [state, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
   React.useEffect(() => {
-    void axios.get<void>(`${apiBaseUrl}/ping`);
-
     const fetchOrdersList = async () => {
       try {
         const { data: ordersListFromApi } = await axios.get<Order[]>(
@@ -22,7 +20,6 @@ function App() {
     };
     void fetchOrdersList();
   }, [dispatch]);
-  console.log(state)
   return (
     <div className="App">
       <OrdersPage />
