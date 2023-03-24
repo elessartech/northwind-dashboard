@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors<Request>());
 app.use(middleware.requestLogger);
 
-app.get("/ping", (_req: Request, res: Response): void => {
+app.get("/api/ping", (_req: Request, res: Response): void => {
     res.send({message: "pong"});
 });
 

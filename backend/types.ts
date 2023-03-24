@@ -7,6 +7,10 @@ export interface Order {
   ShippedDate?: string;
 }
 
-export interface FormattedOrder extends Omit<Order, "ProductName"> {
+interface OrderWithProductsAsList extends Omit<Order, "OrderID"|"ProductName"> {
   Products: string[];
+}
+
+export interface FormattedOrder {
+  [OrderID: string]: OrderWithProductsAsList;
 }
