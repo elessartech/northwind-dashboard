@@ -1,9 +1,11 @@
 export interface Order {
   OrderID: string;
   ShipAddress: string;
+  ShipCity: string;
+  ShipPostalCode: string;
+  ShipCountry: string;
   ContactName: string;
   ProductName: string;
-  OrderDate: string;
   ShippedDate?: string;
 }
 

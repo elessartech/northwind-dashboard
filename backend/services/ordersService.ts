@@ -8,9 +8,11 @@ const modifyOrderDataObj = (allOrders: Order[]): FormattedOrder => {
     } else {
       dataObj[order.OrderID] = {
         ShipAddress: order.ShipAddress,
+        ShipCity: order.ShipCity,
+        ShipPostalCode: order.ShipPostalCode,
+        ShipCountry: order.ShipCountry,
         ContactName: order.ContactName,
         Products: [order.ProductName],
-        OrderDate: order.OrderDate,
         ShippedDate: order.ShippedDate,
       };
     }

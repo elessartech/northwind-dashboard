@@ -38,6 +38,8 @@ const OrdersPage = () => {
                         <figure className='OrdersListItemFigure'>
                           <h2>Shipping address</h2>
                           <p>{order.ShipAddress}</p>
+                          <p>{order.ShipCity} {order.ShipPostalCode}</p>
+                          <p>{order.ShipCountry}</p>
                         </figure>
                         <figure className='OrdersListItemFigure'>
                           <h2>Customer name</h2>
