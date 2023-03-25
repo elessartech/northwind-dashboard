@@ -86,12 +86,12 @@ const OrdersList = ({ orders }: OrderListProps) => {
   return (
     <OrdersListUl>
       {Object.entries(orders).map(
-        (orderEntries: [string, OrderWithProductsAsList]) => {
+        (orderEntries: [string, OrderWithProductsAsList], idx: number) => {
           const orderId = orderEntries[0];
           const order = orderEntries[1];
           const orderIdHref = "order/".concat(orderId);
           return (
-            <OrdersListItem>
+            <OrdersListItem key={idx}>
               <OrdersListItemFigure>
                 <OrdersListItemId>#{orderId}</OrdersListItemId>
               </OrdersListItemFigure>
@@ -111,9 +111,9 @@ const OrdersList = ({ orders }: OrderListProps) => {
                 <OrdersListHeader>Products</OrdersListHeader>
                 {order.Products.map((product: string, i: number) =>
                   i <= 2 ? (
-                    <OrdersListText>{product}</OrdersListText>
+                    <OrdersListText key={i}>{product}</OrdersListText>
                   ) : i === 3 ? (
-                    <OrdersListText>
+                    <OrdersListText key={i}>
                       + {order.Products.length - 3} more...
                     </OrdersListText>
                   ) : null
