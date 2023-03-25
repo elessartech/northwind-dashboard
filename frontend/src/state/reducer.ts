@@ -1,10 +1,10 @@
 import { State } from "./state";
-import {  OrderWithProductsAsList } from "../types";
+import {  Order } from "../types";
 
 export type Action =
   | {
       type: "SET_ORDERS";
-      payload: OrderWithProductsAsList;
+      payload: Order;
     }
 
 
@@ -21,7 +21,7 @@ export const reducer = (state: State, action: Action): State => {
   }
 };
 
-export const setOrdersList = (orders: OrderWithProductsAsList): Action => ({
+export const setOrdersList = (orders: Order): Action => ({
   type: 'SET_ORDERS', 
   payload: orders  
 }) 

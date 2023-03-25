@@ -1,24 +1,24 @@
-import React, { createContext, useContext, useReducer } from "react";
-import { OrderWithProductsAsList } from "../types";
+import { createContext, useContext, useReducer, Reducer, Dispatch, ReactElement } from "react";
+import { Order } from "../types";
 
 import { Action } from "./reducer";
 
 export type State = {
-  orders: OrderWithProductsAsList;
+  orders: Order;
 };
 
 const initialState: State = {
   orders: {}
 };
 
-export const StateContext = createContext<[State, React.Dispatch<Action>]>([
+export const StateContext = createContext<[State, Dispatch<Action>]>([
   initialState,
   () => initialState
 ]);
 
 type StateProviderProps = {
-  reducer: React.Reducer<State, Action>;
-  children: React.ReactElement;
+  reducer: Reducer<State, Action>;
+  children: ReactElement;
 };
 
 export const StateProvider = ({
