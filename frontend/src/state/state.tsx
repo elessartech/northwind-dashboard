@@ -1,4 +1,11 @@
-import { createContext, useContext, useReducer, Reducer, Dispatch, ReactElement } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  Reducer,
+  Dispatch,
+  ReactElement,
+} from "react";
 import { Order } from "../types";
 
 import { Action } from "./reducer";
@@ -8,12 +15,12 @@ export type State = {
 };
 
 const initialState: State = {
-  orders: {}
+  orders: {},
 };
 
 export const StateContext = createContext<[State, Dispatch<Action>]>([
   initialState,
-  () => initialState
+  () => initialState,
 ]);
 
 type StateProviderProps = {
@@ -21,15 +28,12 @@ type StateProviderProps = {
   children: ReactElement;
 };
 
-export const StateProvider = ({
-    reducer,
-    children
-  }: StateProviderProps) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    return (
-      <StateContext.Provider value={[state, dispatch]}>
-        {children}
-      </StateContext.Provider>
-    );
-  };
-  export const useStateValue = () => useContext(StateContext);
+export const StateProvider = ({ reducer, children }: StateProviderProps) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <StateContext.Provider value={[state, dispatch]}>
+      {children}
+    </StateContext.Provider>
+  );
+};
+export const useStateValue = () => useContext(StateContext);

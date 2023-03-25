@@ -9,33 +9,34 @@ import Checkbox from "../components/Checkbox";
 import OrdersList from "../components/OrdersList";
 import styled from "styled-components";
 
-const Wrapper = styled.section``
+const Wrapper = styled.section``;
 
-const Main = styled.main``
+const Main = styled.main``;
 
 const SearchWrapper = styled.section`
   width: 100%;
   margin: 5em auto 0 auto;
   display: grid;
   justify-content: center;
-`
+`;
 
 const OrdersWrapper = styled.section`
   width: 100%;
   margin: 2em auto;
   display: grid;
   justify-content: center;
-`
+`;
 
 const OrdersPage = () => {
   const [productName, setProductName] = useState<string>("");
-  const [shipped, setShipped] = useState<boolean>(false)
+  const [shipped, setShipped] = useState<boolean>(false);
   const [{ orders }, dispatch] = useStateValue();
   useEffect(() => {
     const fetchOrdersList = async () => {
       try {
         const { data: ordersListFromApi } = await axios.get<Order>(
-          `${apiBaseUrl}/orders/search`, { params: { productName: productName, shipped: shipped } }
+          `${apiBaseUrl}/orders/search`,
+          { params: { productName: productName, shipped: shipped } }
         );
         dispatch(setOrdersList(ordersListFromApi));
       } catch (e) {
@@ -43,22 +44,29 @@ const OrdersPage = () => {
       }
     };
     void fetchOrdersList();
-  }, [productName, shipped, dispatch])
+  }, [productName, shipped, dispatch]);
   return (
-        <Wrapper>
-          <Logo />
-          <Main>
-            <SearchWrapper>
-              <Search productName={productName} setProductName={(newProductName: string) => setProductName(newProductName)} />
-              <Checkbox shipped={shipped} setShipped={(newShipped: boolean) => setShipped(newShipped)} />
-            </SearchWrapper>
-            <OrdersWrapper>
-              <OrdersList orders={orders} /> 
-            </OrdersWrapper>
-          </Main>
-        </Wrapper>
-      );
-}
+    <Wrapper>
+      <Logo />
+      <Main>
+        <SearchWrapper>
+          <Search
+            productName={productName}
+            setProductName={(newProductName: string) =>
+              setProductName(newProductName)
+            }
+          />
+          <Checkbox
+            shipped={shipped}
+            setShipped={(newShipped: boolean) => setShipped(newShipped)}
+          />
+        </SearchWrapper>
+        <OrdersWrapper>
+          <OrdersList orders={orders} />
+        </OrdersWrapper>
+      </Main>
+    </Wrapper>
+  );
+};
 
-
-export default OrdersPage
+export default OrdersPage;
