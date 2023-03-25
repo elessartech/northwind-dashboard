@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { SearchProps } from "../types";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchContainer = styled.figure`
   display: flex;
@@ -37,13 +37,13 @@ const SearchBar = styled.input`
 
 const SearchBarContainer = styled.div`
   position: relative;
-`
+`;
 
 const MagnifierIcon = styled(FontAwesomeIcon)`
   position: absolute;
   right: 1.5em;
   top: 1.25em;
-`
+`;
 
 const Search = ({ productName, setProductName }: SearchProps) => {
   return (
