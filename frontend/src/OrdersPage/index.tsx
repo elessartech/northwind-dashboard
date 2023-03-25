@@ -35,7 +35,7 @@ const OrdersPage = () => {
     const fetchOrdersList = async () => {
       try {
         const { data: ordersListFromApi } = await axios.get<Order>(
-          `${apiBaseUrl}/orders/search`,
+          `${apiBaseUrl}/orders`,
           { params: { productName: productName, shipped: shipped } }
         );
         dispatch(setOrdersList(ordersListFromApi));
