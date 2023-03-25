@@ -8,11 +8,11 @@ import ordersService from "../services/ordersService";
 router.get(
   "/",
   async (
-    req: { query: { productName: string; shipped: boolean } },
+    req: { query: { productName: string; shipped: string } },
     res: Response
   ) => {
     const productName = req.query.productName;
-    const shipped = req.query.shipped;
+    const shipped = JSON.parse(req.query.shipped);
     let orders;
     if (shipped) {
       orders = await orderModel.searchOnlyShippedOrdersByProductName(

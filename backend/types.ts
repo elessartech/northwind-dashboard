@@ -9,7 +9,7 @@ export interface Order {
   ShippedDate?: string;
 }
 
-interface OrderWithProductsAsList
+export interface OrderWithProductsAsList
   extends Omit<Order, "OrderID" | "ProductName"> {
   Products: string[];
 }
