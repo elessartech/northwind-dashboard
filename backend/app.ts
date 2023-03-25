@@ -9,10 +9,9 @@ app.use(cors<Request>());
 app.use(middleware.requestLogger);
 
 app.get("/api/ping", (_req: Request, res: Response): void => {
-    res.send({message: "pong"});
+  res.send({ message: "pong" });
 });
 
 app.use("/api/orders", orders);
 
-
-export default app
+export default app;

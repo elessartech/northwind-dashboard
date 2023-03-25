@@ -3,7 +3,7 @@ import { Order, FormattedOrders } from "../types";
 const modifyOrderDataObj = (allOrders: Order[]): FormattedOrders => {
   const dataObj: FormattedOrders = {};
   allOrders.forEach((order: Order) => {
-    if (dataObj.hasOwnProperty(order.OrderID)) {
+    if (Object.prototype.hasOwnProperty.call(dataObj, order.OrderID)) {
       dataObj[order.OrderID].Products.push(order.ProductName);
     } else {
       dataObj[order.OrderID] = {
