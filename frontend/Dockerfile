@@ -4,11 +4,11 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN yarn
+RUN npm install
 
-RUN yarn run build
+RUN npm run build
 
-RUN yarn add global serve
+RUN npm install -g serve
 
 ENV REACT_APP_BACKEND_URL=http://localhost:3001/api
 

@@ -4,12 +4,12 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN yarn
+RUN npm install
 
-RUN yarn add global ts-node
+RUN npm install -g ts-node
 
 ENV DATABASE_URL=./db/northwind.db
 
 ENV PORT=3001
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
