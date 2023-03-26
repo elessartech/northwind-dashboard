@@ -4,14 +4,12 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install
+RUN yarn
 
-RUN npm install --build-from-source sqlite3@5.0.0
-
-RUN npm install -g ts-node
+RUN yarn add global ts-node
 
 ENV DATABASE_URL=./db/northwind.db
 
 ENV PORT=3001
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
