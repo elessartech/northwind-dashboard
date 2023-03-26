@@ -131,11 +131,15 @@ Environment variables can be defined in `.env`-files in both `backend` and `fron
 
 ## Launch
 
-- Install required packages using corresponding commands for frontend and backend.
-- No need to create `.env`-files, since config files adjusted to provide relevant values for local launch. 
+- Install required packages using corresponding commands for [frontend](https://github.com/elessartech/kesko-assignment#install-required-packages-1) and [backend](https://github.com/elessartech/kesko-assignment#install-required-packages).
+- No need to create `.env`-files, since config files are adjusted to provide relevant values for local launch. 
 - Run backend via command `yarn start` in one terminal window.
 - Run frontend via command `yarn start` in another terminal window.
 - Head over to http://localhost:3000/ in your browser.
+
+## Interface 
+
+![Interface](./assets/interface.png)
 
 ## Functionality
 
