@@ -105,6 +105,12 @@ docker-compose up -d
 docker-compose up -d --build
 ```
 
+### Shut down services
+
+```bash
+docker-compose down
+```
+
 
 ## Functionality
 
