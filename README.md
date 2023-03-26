@@ -112,6 +112,30 @@ docker-compose up -d --build
 docker-compose down
 ```
 
+## Environment variables
+
+Environment variables can be defined in `.env`-files in both `backend` and `frontend` directories.
+
+### Backend
+
+| Key | Value |
+| ------ | ------ |
+| DATABASE_URL  | {PATH_TO_DB} |
+| PORT  | {PORT} |
+
+### Frontend
+
+| Key | Value |
+| ------ | ------ |
+| REACT_APP_BACKEND_URL  | http://{HOST}:{PORT}/api |
+
+## Launch
+
+- Install required packages using corresponding commands for frontend and backend.
+- No need to create `.env`-files, since config files adjusted to provide relevant values for local launch. 
+- Run backend dev server via command `yarn run dev` in one terminal window.
+- Run frontend dev server via command `yarn start` in another terminal window.
+- Head over to http://localhost:3000/ in your browser.
 
 ## Functionality
 
