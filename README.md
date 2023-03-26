@@ -139,7 +139,14 @@ Environment variables can be defined in `.env`-files in both `backend` and `fron
 
 ## Interface 
 
-![Interface](./assets/interface.png)
+### Desktop
+
+![Desktop](./assets/desktop.png)
+
+### Mobile
+
+![Mobile](./assets/mobile.png)
+
 
 ## Functionality
 
