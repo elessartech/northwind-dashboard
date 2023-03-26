@@ -4,17 +4,17 @@
 
 The app is written using the following technologies:
 
-- React.js
-- Typescript
-- Node.js
-- Express.js
-- SQLite3 
-- Northwind database
-- esLint
-- Docker/docker-compose
-- Yarn
-- Jest
-- Vitest
+- [React.js](https://react.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/en)
+- [Express.js](https://expressjs.com/)
+- [sqlite3](https://www.npmjs.com/package/sqlite3) 
+- [Northwind database](https://github.com/jpwhite3/northwind-SQLite3)
+- [esLint](https://eslint.org/)
+- [Docker](https://www.docker.com/)/[docker-compose](https://docs.docker.com/compose/)
+- [Yarn](https://yarnpkg.com/)
+- [Jest](https://jestjs.io/)
+- [Vitest](https://vitest.dev/)
 
 ## Backend commands
 
