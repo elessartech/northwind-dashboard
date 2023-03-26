@@ -5,7 +5,6 @@ export interface OrderWithProductsAsList {
   ShipCountry: string;
   ContactName: string;
   Products: string[];
-  OrderDate: string;
   ShippedDate: string;
 }
 

@@ -14,6 +14,7 @@ The app is written using the following technologies:
 - Docker/docker-compose
 - Yarn
 - Jest
+- Vitest
 
 ## Backend commands
 
@@ -144,3 +145,4 @@ The reinstallation of `sqlite3` package did not help. I believe it relates to [t
 - Introduce end-to-end tests (e.g. with cypress) to the frontend part of the app.
 - Add data pagination.
 - Set up CI/CD pipelines.
+- Write more unit tests for the frontend.
