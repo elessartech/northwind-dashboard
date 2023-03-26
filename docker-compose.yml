@@ -1,0 +1,21 @@
+services:
+  app:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/usr/src/ap
+    ports:
+      - 3000:3000
+    container_name: frontend
+  server:
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - 3001:3001
+    container_name: backend
