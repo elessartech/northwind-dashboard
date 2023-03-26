@@ -133,8 +133,8 @@ Environment variables can be defined in `.env`-files in both `backend` and `fron
 
 - Install required packages using corresponding commands for frontend and backend.
 - No need to create `.env`-files, since config files adjusted to provide relevant values for local launch. 
-- Run backend dev server via command `yarn start` in one terminal window.
-- Run frontend dev server via command `yarn start` in another terminal window.
+- Run backend via command `yarn start` in one terminal window.
+- Run frontend via command `yarn start` in another terminal window.
 - Head over to http://localhost:3000/ in your browser.
 
 ## Functionality
