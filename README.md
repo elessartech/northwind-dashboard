@@ -123,7 +123,7 @@ docker-compose up -d --build
 
 ## Known issues
 
-- When trying to dockerize the backend it throws the following error:
+- When trying to bring up the backend service via Docker it throws the following error:
 
 ```
 Error: Cannot find module '/usr/src/app/node_modules/sqlite3/lib/binding/napi-v6-linux-glibc-x64/node_sqlite3.node'
@@ -137,3 +137,4 @@ The reinstallation of `sqlite3` package did not help. I believe it relates to [t
 - Solve the issue with sqlite3 package installation in Docker and run the app properly within the Docker environment.
 - Introduce end-to-end tests (e.g. with cypress) to the frontend part of the app.
 - Add data pagination.
+- Set up CI/CD pipelines.
