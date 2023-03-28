@@ -6,12 +6,12 @@ import {
   Dispatch,
   ReactElement,
 } from "react";
-import { Order } from "../types";
+import { Orders } from "../types";
 
 import { Action } from "./reducer";
 
 export type State = {
-  orders: Order;
+  orders: Orders;
 };
 
 const initialState: State = {

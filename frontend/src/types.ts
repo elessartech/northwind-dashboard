@@ -8,7 +8,7 @@ export interface OrderWithProductsAsList {
   ShippedDate: string;
 }
 
-export interface Order {
+export interface Orders {
   [OrderID: string]: OrderWithProductsAsList;
 }
 
@@ -18,7 +18,7 @@ export interface CheckboxProps {
 }
 
 export interface OrderListProps {
-  orders: Order;
+  orders: Orders;
 }
 
 export interface SearchProps {

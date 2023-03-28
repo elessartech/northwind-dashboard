@@ -1,9 +1,9 @@
 import { State } from "./state";
-import { Order } from "../types";
+import { Orders } from "../types";
 
 export type Action = {
   type: "SET_ORDERS";
-  payload: Order;
+  payload: Orders;
 };
 
 export const reducer = (state: State, action: Action): State => {
@@ -19,7 +19,7 @@ export const reducer = (state: State, action: Action): State => {
   }
 };
 
-export const setOrdersList = (orders: Order): Action => ({
+export const setOrdersList = (orders: Orders): Action => ({
   type: "SET_ORDERS",
   payload: orders,
 });

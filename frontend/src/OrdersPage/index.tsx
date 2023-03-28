@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { setOrdersList, useStateValue } from "../state";
 import axios from "axios";
-import { Order } from "../types";
+import { Orders } from "../types";
 import { apiBaseUrl } from "../constants";
 import Search from "../components/Search";
 import Checkbox from "../components/Checkbox";
@@ -34,7 +34,7 @@ const OrdersPage = () => {
   useEffect(() => {
     const fetchOrdersList = async () => {
       try {
-        const { data: ordersListFromApi } = await axios.get<Order>(
+        const { data: ordersListFromApi } = await axios.get<Orders>(
           `${apiBaseUrl}/orders`,
           { params: { productName: productName, shipped: shipped } }
         );
