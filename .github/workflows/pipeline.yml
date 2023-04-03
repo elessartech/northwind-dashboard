@@ -11,19 +11,22 @@ on:
 jobs:
   frontend_pipeline:
     runs-on: ubuntu-20.04
-    working-directory: ./frontend
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
       - name: npm install
+        working-directory: ./frontend
         run: npm install
       - name: lint
+        working-directory: ./frontend
         run: npm run lint
       - name: build
+        working-directory: ./frontend
         run: npm run build
       - name: test
+        working-directory: ./frontend
         run: npm run test
   backend_pipeline:
     runs-on: ubuntu-20.04
@@ -34,8 +37,11 @@ jobs:
         with:
           node-version: '14'
       - name: npm install
+        working-directory: ./backend
         run: npm install
       - name: lint
+        working-directory: ./backend
         run: npm run lint
       - name: test
+        working-directory: ./backend
         run: npm run test
