@@ -83,6 +83,7 @@ const ViewDetailsLink = styled.a`
 `;
 
 const OrdersList = ({ orders }: OrderListProps) => {
+  // func
   return (
     <OrdersListUl>
       {Object.entries(orders).map(

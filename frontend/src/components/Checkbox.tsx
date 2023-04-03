@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { CheckboxProps } from "../types";
 
-const CheckboxContainer = styled.figure`
+const CheckboxContainer = styled.div`
   margin-top: 0.75em;
   margin-left: 1em;
 `;

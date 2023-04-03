@@ -39,20 +39,14 @@ const OrdersPage = () => {
           { params: { productName: productName, shipped: shipped } }
         );
         dispatch(setOrdersList(ordersListFromApi));
+        setLoading(false);
       } catch (e) {
         console.error(e);
       }
     };
     void fetchOrdersList();
   }, [productName, shipped, dispatch]);
-  useEffect(
-    () => {
-      if (Object.keys(orders).length > 0) {
-        setLoading(false);
-      }
-    },
-    [orders]
-  );
+
   return (
     <Wrapper>
       {loading ? (
