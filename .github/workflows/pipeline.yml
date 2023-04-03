@@ -30,7 +30,6 @@ jobs:
         run: npm run test
   backend_pipeline:
     runs-on: ubuntu-20.04
-    working-directory: ./backend
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
