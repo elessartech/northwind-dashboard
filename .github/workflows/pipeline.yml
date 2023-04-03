@@ -9,38 +9,43 @@ on:
       types: [opened, synchronize]
 
 jobs:
-  frontend_pipeline:
+  testing_pipeline:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - name: npm install
+      - name: install frontend packages
         working-directory: ./frontend
         run: npm install
-      - name: lint
+      - name: lint front
         working-directory: ./frontend
         run: npm run lint
-      - name: build
+      - name: build front
         working-directory: ./frontend
         run: npm run build
-      - name: test
+      - name: test front
         working-directory: ./frontend
         run: npm run test
-  backend_pipeline:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - name: npm install
+      - name: install backend packages
         working-directory: ./backend
         run: npm install
-      - name: lint
+      - name: lint back
         working-directory: ./backend
         run: npm run lint
-      - name: test
+      - name: test back
         working-directory: ./backend
         run: npm run test
+
+  tag_release:
+    permissions: write-all
+    needs: [testing_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: bump version and push tag
+        if: ${{ github.event_name == 'push' }}
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
