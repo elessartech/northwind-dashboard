@@ -45,6 +45,11 @@ yarn run test
 yarn run lint
 ```
 
+### Build
+```bash
+yarn run build
+```
+
 ### Prettier
 ```bash
 yarn run prettier
