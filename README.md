@@ -1,4 +1,4 @@
-# Kesko Assignment
+# Northwind Dashboard
 
 ## Tech stack
 
