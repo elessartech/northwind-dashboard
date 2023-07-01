@@ -15,4 +15,5 @@
 | 28.3. | 2    | misc improvements |
 | 3.4. | 4    | testing pipeline created |
 | 4.4. | 2    | testing pipeline extended |
-| yht   | 43   | | 
+| 1.7. | 5    | home page markup created |
+| yht   | 48   | | 
