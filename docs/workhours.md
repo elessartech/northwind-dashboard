@@ -19,4 +19,5 @@
 | 11.7. | 4    | home page further modification |
 | 12.7. | 7    | authorization introduction, mongo config |
 | 15.7. | 5    | authorization reimplementation |
-| yht   | 64   | | 
+| 15.7. | 4    | almost finalized authorization |
+| total   | 68   | |
