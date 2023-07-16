@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { apiBaseUrl } from "../constants";
+import axios from "axios";
 
 const Wrapper = styled.section`
   margin: 2em auto 0 auto;
@@ -125,6 +128,24 @@ const LoginFormSubmitBtn = styled.button`
 `;
 
 const HomePage = () => {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [logInSubmitted, setLogInSubmitted] = useState<boolean>(false);
+    useEffect(() => {
+      const sendLoginReq = async () => {
+        try {
+          const response = await axios.post<any>(`${apiBaseUrl}/login`, {email, password});
+          console.log(response);
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      if (logInSubmitted && email !== '' && password !== '') { 
+        void sendLoginReq();
+        setLogInSubmitted(false);
+      }
+    }, [logInSubmitted]);
+
     return (
         <Wrapper>
           <ContentWrapper>
@@ -138,17 +159,17 @@ const HomePage = () => {
               <LoginFormInputContainer>
                 <LoginFormInputLabel htmlFor="EmailInput">Email</LoginFormInputLabel>
                 <LoginFormInputBarContainer>
-                  <LoginFormInputBar type="email" name="productName" id="EmailInput" placeholder="example@example.com" />
+                  <LoginFormInputBar type="email" name="productName" id="EmailInput" placeholder="example@example.com" value={email} onChange={(event) => setEmail(event.target.value)} />
                 </LoginFormInputBarContainer>
               </LoginFormInputContainer>
               <LoginFormInputContainer>
                 <LoginFormInputLabel htmlFor="PasswordInput">Password</LoginFormInputLabel>
                 <LoginFormInputBarContainer>
-                  <LoginFormInputBar type="password" name="productName" id="PasswordInput" />
+                  <LoginFormInputBar type="password" name="productName" id="PasswordInput" value={password} onChange={(event) => setPassword(event.target.value)} />
                 </LoginFormInputBarContainer>
               </LoginFormInputContainer>
               <LoginFormSubmitBtnContainer>
-                <LoginFormSubmitBtn>Log In</LoginFormSubmitBtn>
+                <LoginFormSubmitBtn onClick={() => setLogInSubmitted(true)}>Log In</LoginFormSubmitBtn>
               </LoginFormSubmitBtnContainer>
             </LoginFormWrapper>
           </ContentWrapper>
