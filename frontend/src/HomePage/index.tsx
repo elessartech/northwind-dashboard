@@ -13,6 +13,13 @@ const ContentWrapper = styled.figure`
   margin: auto;
   display: flex;
   padding: 1em;
+  @media only screen and (max-width: 945px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 `;
 
 const InfoWrapper = styled.figure`
@@ -25,7 +32,8 @@ const InfoWrapper = styled.figure`
   flex-direction: column;
   padding-left: 2em;
   padding-right: 2em;
-  padding-top: 10em;
+  padding-top: 7%;
+  min-height: 350px;
 `;
 
 const InfoHeader = styled.h1`
@@ -44,6 +52,14 @@ const LoginFormWrapper = styled.figure`
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 2.5em;
+  padding-bottom: 2.5em;
+  @media only screen and (max-width: 945px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 `;
 
 const LoginFormHeader = styled.h1`
@@ -94,7 +110,7 @@ const LoginFormInputBarContainer = styled.div`
 
 const LoginFormSubmitBtnContainer = styled.div`
   margin: 2em auto 0 auto;
-  text-align: center;
+  text-align: left;
 `;
 
 const LoginFormSubmitBtn = styled.button`
@@ -118,7 +134,7 @@ const HomePage = () => {
             </InfoWrapper>
             <LoginFormWrapper>
               <LoginFormHeader>Get started</LoginFormHeader>
-              <LoginFormSubHeader>Create your own account now</LoginFormSubHeader>
+              <LoginFormSubHeader>Authorize your account now</LoginFormSubHeader>
               <LoginFormInputContainer>
                 <LoginFormInputLabel htmlFor="EmailInput">Email</LoginFormInputLabel>
                 <LoginFormInputBarContainer>

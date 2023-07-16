@@ -16,4 +16,7 @@
 | 3.4. | 4    | testing pipeline created |
 | 4.4. | 2    | testing pipeline extended |
 | 1.7. | 5    | home page markup created |
-| yht   | 48   | | 
+| 11.7. | 4    | home page further modification |
+| 12.7. | 7    | authorization introduction, mongo config |
+| 15.7. | 5    | authorization reimplementation |
+| yht   | 64   | | 

@@ -1,3 +1,4 @@
+import { Response, NextFunction } from "express";
 import logger from "./logger";
 
 const getCurrentTime = (): string => {
@@ -22,4 +23,15 @@ const requestLogger = (
   next();
 };
 
-export default { requestLogger };
+const tokenExtractor = (request: any, _response: Response, next: NextFunction) => {
+  const authorization = request.get("authorization");
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+    request.token = authorization.substring(7);
+  } else {
+    request.token = null;
+  }
+
+  next();
+};
+
+export default { requestLogger, tokenExtractor };
