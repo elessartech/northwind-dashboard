@@ -20,4 +20,5 @@
 | 12.7. | 7    | authorization introduction, mongo config |
 | 15.7. | 5    | authorization reimplementation |
 | 15.7. | 4    | almost finalized authorization |
-| total   | 68   | |
+| 15.7. | 3    | finalized authorization |
+| total   | 71   | |
