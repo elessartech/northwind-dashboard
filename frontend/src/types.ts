@@ -25,3 +25,9 @@ export interface SearchProps {
   productName: string;
   setProductName: Function;
 }
+
+ export interface LoggedInUser {
+  name?: string;
+  email?: string;
+  token?: string;
+ } 

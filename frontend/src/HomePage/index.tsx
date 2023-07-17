@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { apiBaseUrl } from "../constants";
 import axios from "axios";
+import { LoggedInUser } from "../types";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.section`
   margin: 2em auto 0 auto;
@@ -131,15 +133,23 @@ const HomePage = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [logInSubmitted, setLogInSubmitted] = useState<boolean>(false);
+    const navigate = useNavigate();
     useEffect(() => {
       const sendLoginReq = async () => {
         try {
-          const response = await axios.post<any>(`${apiBaseUrl}/login`, {email, password});
-          console.log(response);
+          const { data: loggedInUser } = await axios.post<LoggedInUser>(`${apiBaseUrl}/login`, {email, password});
+          window.localStorage.setItem("loggedInNorthwindUser", JSON.stringify(loggedInUser));
+          navigate('/orders');
         } catch (e) {
           console.error(e);
         }
       };
+      if (!logInSubmitted) {
+        const loggedUserJSON = window.localStorage.getItem("loggedInNorthwindUser");
+        if (loggedUserJSON) {
+            navigate('/orders');
+        }
+      }
       if (logInSubmitted && email !== '' && password !== '') { 
         void sendLoginReq();
         setLogInSubmitted(false);
