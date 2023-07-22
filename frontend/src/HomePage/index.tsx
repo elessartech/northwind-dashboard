@@ -4,6 +4,8 @@ import { apiBaseUrl } from "../constants";
 import axios from "axios";
 import { LoggedInUser } from "../types";
 import { useNavigate } from "react-router-dom";
+import React from "react";
+import Navigation from "../components/Navigation";
 
 const Wrapper = styled.section`
   margin: 2em auto 0 auto;
@@ -157,6 +159,8 @@ const HomePage = () => {
     }, [logInSubmitted]);
 
     return (
+      <React.Fragment>
+        <Navigation />
         <Wrapper>
           <ContentWrapper>
             <InfoWrapper>
@@ -184,6 +188,7 @@ const HomePage = () => {
             </LoginFormWrapper>
           </ContentWrapper>
         </Wrapper>
+      </React.Fragment>
     );
 };
 

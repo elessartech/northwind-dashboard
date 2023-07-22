@@ -9,6 +9,7 @@ import Checkbox from "../components/Checkbox";
 import OrdersList from "../components/OrdersList";
 import Spinner from "../components/Spinner";
 import styled from "styled-components";
+import Navigation from "../components/Navigation";
 
 const Wrapper = styled.section`
   margin: 5em auto 0 auto;
@@ -59,29 +60,32 @@ const OrdersPage = () => {
   }, [productName, shipped, dispatch]);
 
   return (
-    <Wrapper>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <React.Fragment>
-          <SearchWrapper>
-            <Search
-              productName={productName}
-              setProductName={(newProductName: string) =>
-                setProductName(newProductName)
-              }
-            />
-            <Checkbox
-              shipped={shipped}
-              setShipped={(newShipped: boolean) => setShipped(newShipped)}
-            />
-          </SearchWrapper>
-          <OrdersWrapper>
-            <OrdersList orders={orders} />
-          </OrdersWrapper>
-        </React.Fragment>
-      )}
-    </Wrapper>
+    <React.Fragment>
+      <Navigation authUserNavToBeDisplayed />
+      <Wrapper>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <React.Fragment>
+            <SearchWrapper>
+              <Search
+                productName={productName}
+                setProductName={(newProductName: string) =>
+                  setProductName(newProductName)
+                }
+              />
+              <Checkbox
+                shipped={shipped}
+                setShipped={(newShipped: boolean) => setShipped(newShipped)}
+              />
+            </SearchWrapper>
+            <OrdersWrapper>
+              <OrdersList orders={orders} />
+            </OrdersWrapper>
+          </React.Fragment>
+        )}
+      </Wrapper>
+    </React.Fragment>
   );
 };
 
