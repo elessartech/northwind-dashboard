@@ -19,6 +19,7 @@
 | 11.7. | 4    | home page further modification |
 | 12.7. | 7    | authorization introduction, mongo config |
 | 15.7. | 5    | authorization reimplementation |
-| 15.7. | 4    | almost finalized authorization |
-| 15.7. | 3    | finalized authorization |
-| total   | 71   | |
+| 16.7. | 4    | almost finalized authorization |
+| 17.7. | 3    | finalized authorization |
+| 22.7. | 5    | work on the implementation of the order details page started |
+| total   | 76   | |

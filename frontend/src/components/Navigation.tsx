@@ -1,6 +1,7 @@
 
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { NavigationProps } from "../types";
 
 const Header = styled.header`
   margin: 1em 1.5em;
@@ -14,7 +15,7 @@ const Header = styled.header`
   }
 `;
 
-const LogoEl = styled.span`
+const Logo = styled.span`
   text-transform: uppercase;
   font-size: 1.5em;
   font-weight: 500;
@@ -23,12 +24,15 @@ const LogoEl = styled.span`
 const LoggedInUserNavWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 10em;
+  width: 15em;
 `;
 
-const StatisticsEl = styled.span``;
+const NavLink = styled.a`
+  text-decoration: none;
+  color: #fff;
+`;
 
-const LogOutEl = styled.button`
+const LogOutBtn = styled.button`
   background: none;
   color: inherit;
   border: none;
@@ -38,17 +42,14 @@ const LogOutEl = styled.button`
   outline: inherit;
 `;
 
-type NavigationProps = {
-  authUserNavToBeDisplayed?: boolean
-};
-
 const Navigation = ({authUserNavToBeDisplayed=false}: NavigationProps) => {
   const navigate = useNavigate();
   const displayNavForLoggedUser = () => {
     return (
       <LoggedInUserNavWrap>
-        <StatisticsEl>Statistics</StatisticsEl>
-        <LogOutEl onClick={() => handleLogout()}>Log Out</LogOutEl>
+        <NavLink href="/orders">Orders</NavLink>
+        <NavLink href="/statistics">Statistics</NavLink>
+        <LogOutBtn onClick={() => handleLogout()}>Log Out</LogOutBtn>
       </LoggedInUserNavWrap>
     );
   };
@@ -58,7 +59,7 @@ const Navigation = ({authUserNavToBeDisplayed=false}: NavigationProps) => {
   };
   return (
     <Header>
-      <LogoEl>Northwind</LogoEl>
+      <Logo>Northwind</Logo>
       { authUserNavToBeDisplayed && displayNavForLoggedUser() }
     </Header>
   );

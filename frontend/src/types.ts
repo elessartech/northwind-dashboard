@@ -31,3 +31,7 @@ export interface SearchProps {
   email?: string;
   token?: string;
  } 
+
+ export interface NavigationProps {
+  authUserNavToBeDisplayed?: boolean;
+}
