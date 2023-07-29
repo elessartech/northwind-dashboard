@@ -22,4 +22,5 @@
 | 16.7. | 4    | almost finalized authorization |
 | 17.7. | 3    | finalized authorization |
 | 22.7. | 5    | work on the implementation of the order details page started |
-| total   | 76   | |
+| 22.7. | 6    | implementation of the order details page finished in terms of design, tried to fix the bug with running the backend in docker, as a result the decision was made to switch to be using mongodb instead of any sqlite3 packages |
+| total   | 82   | |

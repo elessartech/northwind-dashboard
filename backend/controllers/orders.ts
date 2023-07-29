@@ -19,7 +19,7 @@ router.get(
         productName
       );
     } else {
-      orders = await orderModel.searchAllOrdersByProductName(productName);
+      orders = await orderModel.searchAllOrdersByProductName(productName || '');
     }
     const modifiedOrderDataObj = ordersService.modifyOrderDataObj(orders);
     res.json(modifiedOrderDataObj);
