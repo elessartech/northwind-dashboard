@@ -9,7 +9,7 @@
     "lint": "eslint --ext .ts .",
     "prettier": "prettier --write .",
     "test": "jest --coverage",
-    "build": "npx tsc"
+    "build": "tsc"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
