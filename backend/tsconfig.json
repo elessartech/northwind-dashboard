@@ -5,6 +5,7 @@
     "module": "commonjs",
     "strict": true,
     "noUnusedLocals": true,
+    "skipLibCheck": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

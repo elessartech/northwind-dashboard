@@ -1,14 +1,13 @@
 import express, { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import {findUser} from "../services/userService"
+import { findUser } from "../services/userService";
 const router = express.Router();
-
 
 router.post("/", async (request: Request, response: Response) => {
   const body = request.body;
-  const receivedEmail = body.email
-  const receivedPassword = body.password
+  const receivedEmail = body.email;
+  const receivedPassword = body.password;
 
   const user = await findUser(receivedEmail);
   const passwordCorrect =

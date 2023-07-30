@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import orders from "./controllers/orders";
-import login from "./controllers/login"
+import login from "./controllers/login";
 import middleware from "./util/middleware";
 
 const app = express();

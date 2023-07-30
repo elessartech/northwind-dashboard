@@ -23,7 +23,11 @@ const requestLogger = (
   next();
 };
 
-const tokenExtractor = (request: any, _response: Response, next: NextFunction) => {
+const tokenExtractor = (
+  request: any,
+  _response: Response,
+  next: NextFunction
+) => {
   const authorization = request.get("authorization");
   if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
     request.token = authorization.substring(7);
