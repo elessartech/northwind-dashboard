@@ -47,5 +47,8 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.5",
     "ts-node-dev": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=16.14.2"
   }
 }
