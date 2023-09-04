@@ -16,7 +16,7 @@ const ContentWrapper = styled.figure`
   width: 70%;
   height: 80vh;
   border-radius: 12px;
-  background: rgb(1,43,55);
+  background: rgb(1, 43, 55);
   margin: auto;
   display: flex;
   padding: 1em;
@@ -32,7 +32,7 @@ const ContentWrapper = styled.figure`
 const InfoWrapper = styled.figure`
   height: 100%;
   width: 100%;
-  background-color: rgb(77,106,115, .5);
+  background-color: rgb(77, 106, 115, 0.5);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 12px;
   display: flex;
@@ -70,7 +70,7 @@ const LoginFormWrapper = styled.figure`
 `;
 
 const LoginFormHeader = styled.h1`
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
   font-size: 2em;
 `;
 
@@ -121,7 +121,7 @@ const LoginFormSubmitBtnContainer = styled.div`
 `;
 
 const LoginFormSubmitBtn = styled.button`
-  background-color: rgb(0,17,22);
+  background-color: rgb(0, 17, 22);
   padding: 0.75em;
   border-radius: 15px;
   border: none;
@@ -132,64 +132,96 @@ const LoginFormSubmitBtn = styled.button`
 `;
 
 const HomePage = () => {
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [logInSubmitted, setLogInSubmitted] = useState<boolean>(false);
-    const navigate = useNavigate();
-    useEffect(() => {
-      const sendLoginReq = async () => {
-        try {
-          const { data: loggedInUser } = await axios.post<LoggedInUser>(`${apiBaseUrl}/login`, {email, password});
-          window.localStorage.setItem("loggedInNorthwindUser", JSON.stringify(loggedInUser));
-          navigate('/orders');
-        } catch (e) {
-          console.error(e);
-        }
-      };
-      if (!logInSubmitted) {
-        const loggedUserJSON = window.localStorage.getItem("loggedInNorthwindUser");
-        if (loggedUserJSON) {
-            navigate('/orders');
-        }
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [logInSubmitted, setLogInSubmitted] = useState<boolean>(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const sendLoginReq = async () => {
+      try {
+        const { data: loggedInUser } = await axios.post<LoggedInUser>(
+          `${apiBaseUrl}/login`,
+          { email, password }
+        );
+        window.localStorage.setItem(
+          "loggedInNorthwindUser",
+          JSON.stringify(loggedInUser)
+        );
+        navigate("/orders");
+      } catch (e) {
+        console.error(e);
       }
-      if (logInSubmitted && email !== '' && password !== '') { 
-        void sendLoginReq();
-        setLogInSubmitted(false);
+    };
+    if (!logInSubmitted) {
+      const loggedUserJSON = window.localStorage.getItem(
+        "loggedInNorthwindUser"
+      );
+      if (loggedUserJSON) {
+        navigate("/orders");
       }
-    }, [logInSubmitted]);
+    }
+    if (logInSubmitted && email !== "" && password !== "") {
+      void sendLoginReq();
+      setLogInSubmitted(false);
+    }
+  }, [logInSubmitted]);
 
-    return (
-      <React.Fragment>
-        <Navigation />
-        <Wrapper>
-          <ContentWrapper>
-            <InfoWrapper>
-              <InfoHeader>Let us help you run your freelance business.</InfoHeader>
-              <InfoDescr>Our registration process is easy, takes no more than 10 minutes to complete.</InfoDescr>
-            </InfoWrapper>
-            <LoginFormWrapper>
-              <LoginFormHeader>Get started</LoginFormHeader>
-              <LoginFormSubHeader>Authorize your account now</LoginFormSubHeader>
-              <LoginFormInputContainer>
-                <LoginFormInputLabel htmlFor="EmailInput">Email</LoginFormInputLabel>
-                <LoginFormInputBarContainer>
-                  <LoginFormInputBar type="email" name="productName" id="EmailInput" placeholder="example@example.com" value={email} onChange={(event) => setEmail(event.target.value)} />
-                </LoginFormInputBarContainer>
-              </LoginFormInputContainer>
-              <LoginFormInputContainer>
-                <LoginFormInputLabel htmlFor="PasswordInput">Password</LoginFormInputLabel>
-                <LoginFormInputBarContainer>
-                  <LoginFormInputBar type="password" name="productName" id="PasswordInput" value={password} onChange={(event) => setPassword(event.target.value)} />
-                </LoginFormInputBarContainer>
-              </LoginFormInputContainer>
-              <LoginFormSubmitBtnContainer>
-                <LoginFormSubmitBtn onClick={() => setLogInSubmitted(true)}>Log In</LoginFormSubmitBtn>
-              </LoginFormSubmitBtnContainer>
-            </LoginFormWrapper>
-          </ContentWrapper>
-        </Wrapper>
-      </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <Navigation />
+      <Wrapper>
+        <ContentWrapper>
+          <InfoWrapper>
+            <InfoHeader>
+              Let us help you run your freelance business.
+            </InfoHeader>
+            <InfoDescr>
+              Our registration process is easy, takes no more than 10 minutes to
+              complete.
+            </InfoDescr>
+          </InfoWrapper>
+          <LoginFormWrapper>
+            <LoginFormHeader>Get started</LoginFormHeader>
+            <LoginFormSubHeader>Authorize your account now</LoginFormSubHeader>
+            <LoginFormInputContainer>
+              <LoginFormInputLabel htmlFor="EmailInput">
+                Email
+              </LoginFormInputLabel>
+              <LoginFormInputBarContainer>
+                <LoginFormInputBar
+                  type="email"
+                  name="productName"
+                  id="EmailInput"
+                  placeholder="example@example.com"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+              </LoginFormInputBarContainer>
+            </LoginFormInputContainer>
+            <LoginFormInputContainer>
+              <LoginFormInputLabel htmlFor="PasswordInput">
+                Password
+              </LoginFormInputLabel>
+              <LoginFormInputBarContainer>
+                <LoginFormInputBar
+                  type="password"
+                  name="productName"
+                  id="PasswordInput"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+              </LoginFormInputBarContainer>
+            </LoginFormInputContainer>
+            <LoginFormSubmitBtnContainer>
+              <LoginFormSubmitBtn onClick={() => setLogInSubmitted(true)}>
+                Log In
+              </LoginFormSubmitBtn>
+            </LoginFormSubmitBtnContainer>
+          </LoginFormWrapper>
+        </ContentWrapper>
+      </Wrapper>
+    </React.Fragment>
+  );
 };
 
 export default HomePage;

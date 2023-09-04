@@ -35,10 +35,12 @@ const OrdersPage = () => {
   const [{ orders }, dispatch] = useStateValue();
   const navigate = useNavigate();
   useEffect(() => {
-    if (loading)  {
-      const loggedUserJSON = window.localStorage.getItem("loggedInNorthwindUser");
+    if (loading) {
+      const loggedUserJSON = window.localStorage.getItem(
+        "loggedInNorthwindUser"
+      );
       if (!loggedUserJSON) {
-          navigate('/');
+        navigate("/");
       }
     }
   }, [loading]);

@@ -1,4 +1,9 @@
-import { Order, FormattedOrders } from "../types";
+import {
+  Order,
+  FormattedOrders,
+  SingleOrder,
+  ModifiedSingleOrder,
+} from "../types";
 
 const modifyOrderDataObj = (allOrders: Order[]): FormattedOrders => {
   const dataObj: FormattedOrders = {};
@@ -20,6 +25,28 @@ const modifyOrderDataObj = (allOrders: Order[]): FormattedOrders => {
   return dataObj;
 };
 
+const modifySingleOrderDataObj = (
+  order: SingleOrder[]
+): ModifiedSingleOrder => {
+  const firstOrderedProduct = order[0];
+  let modifiedOrder: ModifiedSingleOrder = {
+    id: firstOrderedProduct.OrderID,
+    orderDate: firstOrderedProduct.OrderDate,
+    shippedDate: firstOrderedProduct.ShippedDate,
+    products: [],
+  };
+  modifiedOrder.products = order.map((orderedItem: SingleOrder) => ({
+    totalPrice: orderedItem.UnitPrice * orderedItem.Quantity,
+    pricePerItem: orderedItem.UnitPrice,
+    quantity: orderedItem.Quantity,
+    name: orderedItem.ProductName,
+    category: orderedItem.CategoryName,
+    picture: orderedItem.Picture,
+  }));
+  return modifiedOrder;
+};
+
 export default {
   modifyOrderDataObj,
+  modifySingleOrderDataObj,
 };

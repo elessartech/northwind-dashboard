@@ -6,25 +6,26 @@ import {
   Dispatch,
   ReactElement,
 } from "react";
-import { Orders } from "../types";
+import { Orders, SingleOrder } from "../types";
 
-import { Action } from "./reducer";
+import { OrdersAction, OrderAction } from "./reducer";
 
 export type State = {
   orders: Orders;
+  order: SingleOrder;
 };
 
 const initialState: State = {
   orders: {},
+  order: {} as SingleOrder,
 };
 
-export const StateContext = createContext<[State, Dispatch<Action>]>([
-  initialState,
-  () => initialState,
-]);
+export const StateContext = createContext<
+  [State, Dispatch<OrdersAction | OrderAction>]
+>([initialState, () => initialState]);
 
 type StateProviderProps = {
-  reducer: Reducer<State, Action>;
+  reducer: Reducer<State, OrdersAction | OrderAction>;
   children: ReactElement;
 };
 

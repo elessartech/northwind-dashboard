@@ -26,4 +26,23 @@ router.get(
   }
 );
 
+router.get(
+  "/:orderId",
+  async (
+    req: {
+      params: any;
+      query: { productName: string; shipped: string };
+    },
+    res: Response
+  ) => {
+    const orderId = req.params.orderId;
+    const orderedProducts = await orderModel.findForIndividualOrderInfo(
+      orderId
+    );
+    const modifiedOrderDataObj =
+      ordersService.modifySingleOrderDataObj(orderedProducts);
+    res.json(modifiedOrderDataObj);
+  }
+);
+
 export default router;

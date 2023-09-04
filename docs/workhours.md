@@ -24,4 +24,5 @@
 | 22.7. | 5    | work on the implementation of the order details page started |
 | 29.7. | 6    | implementation of the order details page finished in terms of design, tried to fix the bug with running the backend in docker, as a result the decision was made to switch to be using mongodb instead of any sqlite3 packages |
 | 30.7. | 4    | deployed backend |
-| total   | 86   | |
+| 4.9. | 7    | single order logics and visual tweaking, csv product data download |
+| total   | 93   | |

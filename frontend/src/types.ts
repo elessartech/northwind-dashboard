@@ -26,12 +26,28 @@ export interface SearchProps {
   setProductName: Function;
 }
 
- export interface LoggedInUser {
+export interface LoggedInUser {
   name?: string;
   email?: string;
   token?: string;
- } 
+}
 
- export interface NavigationProps {
+export interface NavigationProps {
   authUserNavToBeDisplayed?: boolean;
+}
+
+interface OrderedProduct {
+  totalPrice: number;
+  pricePerItem: number;
+  quantity: number;
+  name: string;
+  category: string;
+  picture: Buffer;
+}
+
+export interface SingleOrder {
+  id: string;
+  orderDate: string;
+  shippedDate: string;
+  products: OrderedProduct[];
 }

@@ -1,5 +1,5 @@
 import db from "../util/db";
-import { Order } from "../types";
+import { Order, SingleOrder } from "../types";
 
 const searchAllOrdersByProductName = async (
   search: string
@@ -29,7 +29,22 @@ const searchOnlyShippedOrdersByProductName = async (
   });
 };
 
+const findForIndividualOrderInfo = async (
+  orderId: string
+): Promise<SingleOrder[]> => {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT Orders.OrderID, Orders.OrderDate, Orders.ShippedDate, 'Order Details'.UnitPrice, 'Order Details'.Quantity, Products.ProductName, Categories.CategoryName, Categories.Picture FROM Orders, Products, Categories INNER JOIN 'Order Details' On Orders.OrderID='Order Details'.OrderID WHERE 'Order Details'.ProductID = Products.ProductID AND Products.CategoryID=Categories.CategoryID AND 'Order Details'.OrderID=${orderId}`,
+      (err, row: SingleOrder[]) => {
+        if (err) reject(err);
+        resolve(row);
+      }
+    );
+  });
+};
+
 export default {
   searchAllOrdersByProductName,
   searchOnlyShippedOrdersByProductName,
+  findForIndividualOrderInfo,
 };

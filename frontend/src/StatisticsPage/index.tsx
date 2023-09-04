@@ -9,14 +9,12 @@ const Wrapper = styled.section`
 `;
 
 const StatisticsPage = () => {
-    return (
-        <React.Fragment>
-            <Navigation authUserNavToBeDisplayed />
-            <Wrapper>
-                
-            </Wrapper>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <Navigation authUserNavToBeDisplayed />
+      <Wrapper></Wrapper>
+    </React.Fragment>
+  );
 };
 
 export default StatisticsPage;

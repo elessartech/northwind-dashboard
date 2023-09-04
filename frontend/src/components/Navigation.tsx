@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { NavigationProps } from "../types";
@@ -42,7 +41,7 @@ const LogOutBtn = styled.button`
   outline: inherit;
 `;
 
-const Navigation = ({authUserNavToBeDisplayed=false}: NavigationProps) => {
+const Navigation = ({ authUserNavToBeDisplayed = false }: NavigationProps) => {
   const navigate = useNavigate();
   const displayNavForLoggedUser = () => {
     return (
@@ -55,12 +54,12 @@ const Navigation = ({authUserNavToBeDisplayed=false}: NavigationProps) => {
   };
   const handleLogout = () => {
     window.localStorage.removeItem("loggedInNorthwindUser");
-    navigate('/');
+    navigate("/");
   };
   return (
     <Header>
       <Logo>Northwind</Logo>
-      { authUserNavToBeDisplayed && displayNavForLoggedUser() }
+      {authUserNavToBeDisplayed && displayNavForLoggedUser()}
     </Header>
   );
 };

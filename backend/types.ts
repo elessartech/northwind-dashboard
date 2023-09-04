@@ -17,3 +17,30 @@ export interface OrderWithProductsAsList
 export interface FormattedOrders {
   [OrderID: string]: OrderWithProductsAsList;
 }
+
+export interface SingleOrder {
+  OrderID: string;
+  OrderDate: string;
+  ShippedDate: string;
+  UnitPrice: number;
+  Quantity: number;
+  ProductName: string;
+  CategoryName: string;
+  Picture: Buffer;
+}
+
+interface OrderedProduct {
+  totalPrice: number;
+  pricePerItem: number;
+  quantity: number;
+  name: string;
+  category: string;
+  picture: Buffer;
+}
+
+export interface ModifiedSingleOrder {
+  id: string;
+  orderDate: string;
+  shippedDate: string;
+  products: OrderedProduct[];
+}
