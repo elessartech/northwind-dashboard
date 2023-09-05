@@ -25,5 +25,5 @@
 | 29.7. | 6    | implementation of the order details page finished in terms of design, tried to fix the bug with running the backend in docker, as a result the decision was made to switch to be using mongodb instead of any sqlite3 packages |
 | 30.7. | 4    | deployed backend |
 | 4.9. | 7    | single order logics and visual tweaking, csv product data download |
-| 5.9. | 2    | stats page markup |
-| total   | 95   | |
+| 5.9. | 5    | stats page markup, checking out visualization frameworks and planning what to visualize |
+| total   | 98   | |
