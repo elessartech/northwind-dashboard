@@ -43,8 +43,35 @@ const findForIndividualOrderInfo = async (
   });
 };
 
+const findNumberOfOrdersThroughoutTimeline = async (): Promise<SingleOrder[]> => {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT COUNT(Orders.OrderID) AS value, Orders.OrderDate AS day FROM Orders GROUP BY Orders.OrderDate;`,
+      (err, row: SingleOrder[]) => {
+        if (err) reject(err);
+        resolve(row);
+      }
+    );
+  });
+};
+
+
+const findNumberOfOrdersByCountry = async (): Promise<SingleOrder[]> => {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT COUNT(Orders.OrderID) as value, Orders.ShipCountry as label, Orders.ShipCountry as id FROM Orders GROUP BY Orders.ShipCountry;`,
+      (err, row: SingleOrder[]) => {
+        if (err) reject(err);
+        resolve(row);
+      }
+    );
+  });
+};
+
 export default {
   searchAllOrdersByProductName,
   searchOnlyShippedOrdersByProductName,
   findForIndividualOrderInfo,
+  findNumberOfOrdersThroughoutTimeline,
+  findNumberOfOrdersByCountry
 };

@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import orders from "./controllers/orders";
 import login from "./controllers/login";
+import statistics from "./controllers/statistics";
 import middleware from "./util/middleware";
 
 const app = express();
@@ -16,5 +17,6 @@ app.get("/api/ping", (_req: Request, res: Response): void => {
 
 app.use("/api/orders", orders);
 app.use("/api/login", login);
+app.use("/api/statistics", statistics);
 
 export default app;

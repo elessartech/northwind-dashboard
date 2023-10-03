@@ -26,4 +26,5 @@
 | 30.7. | 4    | deployed backend |
 | 4.9. | 7    | single order logics and visual tweaking, csv product data download |
 | 5.9. | 5    | stats page markup, checking out visualization frameworks and planning what to visualize |
-| total   | 98   | |
+| 3.10. | 7    | set up backend for preparing the data for charts and front to fetching and processing the data as well as got first charts properly visualized |
+| total   | 105   | |
