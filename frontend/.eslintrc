@@ -11,7 +11,7 @@
     "es6": true
   },
   "rules": {
-    "@typescript-eslint/semi": ["error"],
+    "@typescript-eslint/semi": 0, // ["error"],
     "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
@@ -24,6 +24,7 @@
       { "argsIgnorePattern": "^_" }
     ],
     "@typescript-eslint/no-explicit-any": 1,
+    "@typescript-eslint/no-unsafe-assignment": 0,
     "no-case-declarations": 0,
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0
