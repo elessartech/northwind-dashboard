@@ -27,4 +27,5 @@
 | 4.9. | 7    | single order logics and visual tweaking, csv product data download |
 | 5.9. | 5    | stats page markup, checking out visualization frameworks and planning what to visualize |
 | 3.10. | 7    | set up backend for preparing the data for charts and front to fetching and processing the data as well as got first charts properly visualized |
-| total   | 105   | |
+| 8.10. | 3    | wrote more logics for statistics fetching related sql requests, distributed requests over to chart components  |
+| total   | 108   | |

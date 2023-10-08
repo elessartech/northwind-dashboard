@@ -85,7 +85,13 @@ const StatisticsPage = () => {
   ] = useState<any>(null);
   const [numberOfOrdersByCountry, setNumberOfOrdersByCountry] =
     useState<any>(null);
+  const [mostSaledProduct, setMostSaledProduct] = useState<any>(null);
+  const [mostSaledProductPerItem, setMostSaledProductPerItem] =
+    useState<any>(null);
+  const [mostSaledCategory, setMostSaledCategory] = useState<any>(null);
+
   const navigate = useNavigate();
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedInNorthwindUser");
     if (!loggedUserJSON) {
@@ -94,7 +100,7 @@ const StatisticsPage = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const fetchOrdersList = async () => {
+    const fetchNumberOfOrdersThroughoutTimelineData = async () => {
       try {
         const { data: statisticsData } = await axios.get<any>(
           `${apiBaseUrl}/statistics/number-of-orders-throughout-timeline`
@@ -105,12 +111,12 @@ const StatisticsPage = () => {
       }
     };
     if (!numberOfOrdersThroughoutTimelineData) {
-      void fetchOrdersList();
+      void fetchNumberOfOrdersThroughoutTimelineData();
     }
   }, [numberOfOrdersThroughoutTimelineData]);
 
   useEffect(() => {
-    const fetchOrdersList = async () => {
+    const fetchNumberOfOrdersByCountry = async () => {
       try {
         const { data: statisticsData } = await axios.get<any>(
           `${apiBaseUrl}/statistics/number-of-orders-by-country`
@@ -121,9 +127,57 @@ const StatisticsPage = () => {
       }
     };
     if (!numberOfOrdersByCountry) {
-      void fetchOrdersList();
+      void fetchNumberOfOrdersByCountry();
     }
   }, [numberOfOrdersByCountry]);
+
+  useEffect(() => {
+    const fetchMostSaledProduct = async () => {
+      try {
+        const { data: statisticsData } = await axios.get<any>(
+          `${apiBaseUrl}/statistics/most-saled-product`
+        );
+        setMostSaledProduct(statisticsData);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    if (!mostSaledProduct) {
+      void fetchMostSaledProduct();
+    }
+  }, [mostSaledProduct]);
+
+  useEffect(() => {
+    const fetchMostSaledProductPerItem = async () => {
+      try {
+        const { data: statisticsData } = await axios.get<any>(
+          `${apiBaseUrl}/statistics/most-saled-product-per-item`
+        );
+        setMostSaledProductPerItem(statisticsData);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    if (!mostSaledProductPerItem) {
+      void fetchMostSaledProductPerItem();
+    }
+  }, [mostSaledProductPerItem]);
+
+  useEffect(() => {
+    const fetchMostSaledCategory = async () => {
+      try {
+        const { data: statisticsData } = await axios.get<any>(
+          `${apiBaseUrl}/statistics/most-saled-category`
+        );
+        setMostSaledCategory(statisticsData);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    if (!mostSaledCategory) {
+      void fetchMostSaledCategory();
+    }
+  }, [mostSaledCategory]);
 
   return (
     <React.Fragment>
@@ -143,23 +197,18 @@ const StatisticsPage = () => {
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
-            {numberOfOrdersThroughoutTimelineData && (
-              <Calendar data={numberOfOrdersThroughoutTimelineData} />
+            {mostSaledProduct && (
+              <Pie data={mostSaledProduct} height={400} width={580} />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
-            {numberOfOrdersThroughoutTimelineData && (
-              <Calendar data={numberOfOrdersThroughoutTimelineData} />
+            {mostSaledProductPerItem && (
+              <Pie data={mostSaledProductPerItem} height={400} width={580} />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
-            {numberOfOrdersThroughoutTimelineData && (
-              <Calendar data={numberOfOrdersThroughoutTimelineData} />
-            )}
-          </StatisticsGridItem>
-          <StatisticsGridItem>
-            {numberOfOrdersThroughoutTimelineData && (
-              <Calendar data={numberOfOrdersThroughoutTimelineData} />
+            {mostSaledCategory && (
+              <Pie data={mostSaledCategory} height={400} width={580} />
             )}
           </StatisticsGridItem>
         </StatisticsGridWrapper>

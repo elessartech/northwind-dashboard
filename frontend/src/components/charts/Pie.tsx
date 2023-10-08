@@ -6,7 +6,6 @@ import { ResponsivePie } from "@nivo/pie";
 // website examples showcase many properties,
 // you'll often use just a few of them.
 const Pie = ({ data }: any) => {
-  console.log(data);
   return (
     <ResponsivePie
       data={data}

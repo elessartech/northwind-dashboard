@@ -43,7 +43,9 @@ const findForIndividualOrderInfo = async (
   });
 };
 
-const findNumberOfOrdersThroughoutTimeline = async (): Promise<SingleOrder[]> => {
+const findNumberOfOrdersThroughoutTimeline = async (): Promise<
+  SingleOrder[]
+> => {
   return new Promise((resolve, reject) => {
     db.all(
       `SELECT COUNT(Orders.OrderID) AS value, Orders.OrderDate AS day FROM Orders GROUP BY Orders.OrderDate;`,
@@ -54,7 +56,6 @@ const findNumberOfOrdersThroughoutTimeline = async (): Promise<SingleOrder[]> =>
     );
   });
 };
-
 
 const findNumberOfOrdersByCountry = async (): Promise<SingleOrder[]> => {
   return new Promise((resolve, reject) => {
@@ -68,10 +69,49 @@ const findNumberOfOrdersByCountry = async (): Promise<SingleOrder[]> => {
   });
 };
 
+const findMostSaledProduct = async (): Promise<SingleOrder[]> => {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT COUNT('Order Details'.ProductID) as value, Products.ProductName as id, Products.ProductID as label FROM 'Order Details' INNER JOIN Products on Products.ProductID='Order Details'.ProductID GROUP BY Products.ProductName;`,
+      (err, row: SingleOrder[]) => {
+        if (err) reject(err);
+        resolve(row);
+      }
+    );
+  });
+};
+
+const findMostSaledProductPerItem = async (): Promise<SingleOrder[]> => {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT CAST(ROUND(SUM('Order Details'.UnitPrice)) as INT) as value, Products.ProductName as id, Products.ProductID as label FROM 'Order Details' INNER JOIN Products on Products.ProductID='Order Details'.ProductID GROUP BY Products.ProductName;`,
+      (err, row: SingleOrder[]) => {
+        if (err) reject(err);
+        resolve(row);
+      }
+    );
+  });
+};
+
+const findMostSaledCategory = async (): Promise<SingleOrder[]> => {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT COUNT('Order Details'.ProductID) as value, Categories.CategoryName as id, Categories.CategoryID as label FROM Products INNER JOIN 'Order Details'on Products.ProductID='Order Details'.ProductID INNER JOIN Categories ON Categories.CategoryID=Products.CategoryID GROUP BY Categories.CategoryName;`,
+      (err, row: SingleOrder[]) => {
+        if (err) reject(err);
+        resolve(row);
+      }
+    );
+  });
+};
+
 export default {
   searchAllOrdersByProductName,
   searchOnlyShippedOrdersByProductName,
   findForIndividualOrderInfo,
   findNumberOfOrdersThroughoutTimeline,
-  findNumberOfOrdersByCountry
+  findNumberOfOrdersByCountry,
+  findMostSaledProduct,
+  findMostSaledProductPerItem,
+  findMostSaledCategory,
 };
