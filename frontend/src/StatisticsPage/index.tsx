@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Navigation from "../components/Navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartSimple } from "@fortawesome/free-solid-svg-icons";
-import Calendar from "../components/charts/Calendar";
 import { useNavigate } from "react-router-dom";
 import { apiBaseUrl } from "../constants";
 import axios from "axios";
-import { Pie } from "@nivo/pie";
+import Pie from "../components/charts/Pie";
+import Calendar from "../components/charts/Calendar";
 
 const Wrapper = styled.section`
   margin: 5em auto 0 auto;
@@ -30,7 +30,7 @@ const StatisticsGridWrapper = styled.div`
   margin: auto;
   width: 100%;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(2, 1fr);
   @media only screen and (max-width: 800px) {
     & {
       display: flex;
@@ -41,8 +41,8 @@ const StatisticsGridWrapper = styled.div`
 
 const StatisticsGridItem = styled.div`
   background: white;
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 750px;
   height: 400px;
   margin: 2em auto;
   -webkit-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.3),
@@ -188,27 +188,27 @@ const StatisticsPage = () => {
         <StatisticsGridWrapper>
           <StatisticsGridItem>
             {numberOfOrdersThroughoutTimelineData && (
-              <Calendar data={numberOfOrdersThroughoutTimelineData} />
+              <Calendar data={numberOfOrdersThroughoutTimelineData} header="Number of orders throughout the timeline" />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {numberOfOrdersByCountry && (
-              <Pie data={numberOfOrdersByCountry} height={400} width={580} />
+              <Pie data={numberOfOrdersByCountry} header="Number of orders by country" height={400} width={580} />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {mostSaledProduct && (
-              <Pie data={mostSaledProduct} height={400} width={580} />
+              <Pie data={mostSaledProduct} header="Most saled products" height={400} width={580} />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {mostSaledProductPerItem && (
-              <Pie data={mostSaledProductPerItem} height={400} width={580} />
+              <Pie data={mostSaledProductPerItem} header="Most saled products per item" height={400} width={580} />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {mostSaledCategory && (
-              <Pie data={mostSaledCategory} height={400} width={580} />
+              <Pie data={mostSaledCategory} header="Most saled categories" height={400} width={580} />
             )}
           </StatisticsGridItem>
         </StatisticsGridWrapper>

@@ -8,6 +8,8 @@ import React from "react";
 import Navigation from "../components/Navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWind } from "@fortawesome/free-solid-svg-icons";
+// @ts-ignore
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const Wrapper = styled.section`
   margin: 2em auto 0 auto;
@@ -170,6 +172,8 @@ const HomePage = () => {
         navigate("/orders");
       } catch (e) {
         console.error(e);
+        void NotificationManager.error('Wrong credentials!', '', 3000);
+        setLogInSubmitted(false);
       }
     };
     if (!logInSubmitted) {
@@ -182,6 +186,9 @@ const HomePage = () => {
     }
     if (logInSubmitted && email !== "" && password !== "") {
       void sendLoginReq();
+      setLogInSubmitted(false);
+    } else if (logInSubmitted && (email === "" || password === "")) {
+      void NotificationManager.error('Please, enter all fields!', '', 3000);
       setLogInSubmitted(false);
     }
   }, [logInSubmitted]);
@@ -206,6 +213,7 @@ const HomePage = () => {
           <LoginFormWrapper>
             <LoginFormHeader>Get started</LoginFormHeader>
             <LoginFormSubHeader>Authorize your account now</LoginFormSubHeader>
+            <NotificationContainer/>
             <LoginFormInputContainer>
               <LoginFormInputLabel htmlFor="EmailInput">
                 Email
