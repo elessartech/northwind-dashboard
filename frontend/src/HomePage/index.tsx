@@ -6,6 +6,8 @@ import { LoggedInUser } from "../types";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Navigation from "../components/Navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWind } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.section`
   margin: 2em auto 0 auto;
@@ -40,13 +42,31 @@ const InfoWrapper = styled.figure`
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 7%;
-  min-height: 350px;
+  padding-bottom: 2em;
+  @media only screen and (min-width: 945px) {
+    max-height: 600px;
+  }
 `;
 
 const InfoHeader = styled.h1`
   margin-bottom: 1em;
   font-size: 2em;
 `;
+
+const InfoIconWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 2em;
+  & > svg {
+    font-size: 8em;
+  }
+  @media only screen and (max-width: 945px) {
+    & > svg {
+      font-size: 5em;
+    }
+  }
+`
+
+const InfoIcon = styled(FontAwesomeIcon)``
 
 const InfoDescr = styled.p`
   font-size: 1.125em;
@@ -172,6 +192,9 @@ const HomePage = () => {
       <Wrapper>
         <ContentWrapper>
           <InfoWrapper>
+            <InfoIconWrapper>
+              <InfoIcon height={250} width={250} icon={faWind} />
+            </InfoIconWrapper>
             <InfoHeader>
               Let us help you run your freelance business.
             </InfoHeader>
