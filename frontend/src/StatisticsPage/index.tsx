@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import Navigation from "../components/Navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,31 +35,33 @@ const StatisticsGridWrapper = styled.div`
     & {
       display: flex;
       flex-direction: column;
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 `;
 
 const StatisticsGridItem = styled.div`
-  background: white;
+  padding: .25em 0;
+  background: rgb(181, 65, 57);
   width: 100%;
   max-width: 750px;
   height: 400px;
   margin: 2em auto;
-  -webkit-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.3),
-    0 0 40px rgba(255, 255, 255, 0.1) inset;
-  -moz-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.3),
-    0 0 40px rgba(255, 255, 255, 0.1) inset;
-  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.3),
-    0 0 40px rgba(255, 255, 255, 0.1) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(181, 65, 57, 0.3),
+    0 0 40px rgba(181, 65, 57, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(181, 65, 57, 0.3),
+    0 0 40px rgba(181, 65, 57, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(181, 65, 57, 0.3),
+    0 0 40px rgba(181, 65, 57, 0.1) inset;
   position: relative;
   &:before,
   &:after {
     content: "";
     position: absolute;
     z-index: -1;
-    -webkit-box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    -moz-box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    -webkit-box-shadow: 0 0 20px rgba(181, 65, 57, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(181, 65, 57, 0.8);
+    box-shadow: 0 0 20px rgba(181, 65, 57, 0.8);
     top: 0;
     bottom: 0;
     left: 10px;
@@ -100,84 +102,33 @@ const StatisticsPage = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const fetchNumberOfOrdersThroughoutTimelineData = async () => {
-      try {
-        const { data: statisticsData } = await axios.get<any>(
-          `${apiBaseUrl}/statistics/number-of-orders-throughout-timeline`
-        );
-        setNumberOfOrdersThroughoutTimelineData(statisticsData);
-      } catch (e) {
-        console.error(e);
-      }
-    };
     if (!numberOfOrdersThroughoutTimelineData) {
-      void fetchNumberOfOrdersThroughoutTimelineData();
+      void fetchChartData('number-of-orders-throughout-timeline').then(data => setNumberOfOrdersThroughoutTimelineData(data))
     }
-  }, [numberOfOrdersThroughoutTimelineData]);
-
-  useEffect(() => {
-    const fetchNumberOfOrdersByCountry = async () => {
-      try {
-        const { data: statisticsData } = await axios.get<any>(
-          `${apiBaseUrl}/statistics/number-of-orders-by-country`
-        );
-        setNumberOfOrdersByCountry(statisticsData);
-      } catch (e) {
-        console.error(e);
-      }
-    };
     if (!numberOfOrdersByCountry) {
-      void fetchNumberOfOrdersByCountry();
+      void fetchChartData('number-of-orders-by-country').then(data => setNumberOfOrdersByCountry(data))
     }
-  }, [numberOfOrdersByCountry]);
-
-  useEffect(() => {
-    const fetchMostSaledProduct = async () => {
-      try {
-        const { data: statisticsData } = await axios.get<any>(
-          `${apiBaseUrl}/statistics/most-saled-product`
-        );
-        setMostSaledProduct(statisticsData);
-      } catch (e) {
-        console.error(e);
-      }
-    };
     if (!mostSaledProduct) {
-      void fetchMostSaledProduct();
+      void fetchChartData('most-saled-product').then(data => setMostSaledProduct(data))
     }
-  }, [mostSaledProduct]);
-
-  useEffect(() => {
-    const fetchMostSaledProductPerItem = async () => {
-      try {
-        const { data: statisticsData } = await axios.get<any>(
-          `${apiBaseUrl}/statistics/most-saled-product-per-item`
-        );
-        setMostSaledProductPerItem(statisticsData);
-      } catch (e) {
-        console.error(e);
-      }
-    };
     if (!mostSaledProductPerItem) {
-      void fetchMostSaledProductPerItem();
+      void fetchChartData('most-saled-product-per-item').then(data => setMostSaledProductPerItem(data))
     }
-  }, [mostSaledProductPerItem]);
-
-  useEffect(() => {
-    const fetchMostSaledCategory = async () => {
-      try {
-        const { data: statisticsData } = await axios.get<any>(
-          `${apiBaseUrl}/statistics/most-saled-category`
-        );
-        setMostSaledCategory(statisticsData);
-      } catch (e) {
-        console.error(e);
-      }
-    };
     if (!mostSaledCategory) {
-      void fetchMostSaledCategory();
+      void fetchChartData('most-saled-category').then(data => setMostSaledCategory(data))
     }
-  }, [mostSaledCategory]);
+  }, [numberOfOrdersThroughoutTimelineData, numberOfOrdersByCountry,mostSaledProduct, mostSaledProductPerItem, mostSaledCategory]);
+
+  const fetchChartData = useCallback(async (url: string) => {
+    try {
+      const { data: statisticsData } = await axios.get<any>(
+        `${apiBaseUrl}/statistics/${url}`
+      );
+      return statisticsData
+    } catch (e) {
+      console.error(e);
+    }
+  }, [])
 
   return (
     <React.Fragment>
@@ -193,22 +144,22 @@ const StatisticsPage = () => {
           </StatisticsGridItem>
           <StatisticsGridItem>
             {numberOfOrdersByCountry && (
-              <Pie data={numberOfOrdersByCountry} header="Number of orders by country" height={400} width={580} />
+              <Pie data={numberOfOrdersByCountry} header="Number of orders by country" />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {mostSaledProduct && (
-              <Pie data={mostSaledProduct} header="Most saled products" height={400} width={580} />
+              <Pie data={mostSaledProduct} header="Most saled products" />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {mostSaledProductPerItem && (
-              <Pie data={mostSaledProductPerItem} header="Most saled products per item" height={400} width={580} />
+              <Pie data={mostSaledProductPerItem} header="Most saled products per item"/>
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {mostSaledCategory && (
-              <Pie data={mostSaledCategory} header="Most saled categories" height={400} width={580} />
+              <Pie data={mostSaledCategory} header="Most saled categories" />
             )}
           </StatisticsGridItem>
         </StatisticsGridWrapper>

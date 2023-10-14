@@ -1,8 +1,28 @@
 import { ResponsiveCalendar } from "@nivo/calendar";
+import styled from "styled-components";
+
+const CalendarWrap = styled.div`
+    height: 400px;
+`
+
+const CalendarHeader = styled.h2`
+    color: #fff;
+`
+
+const CalendarTooltip = styled.div`
+    background: white;
+    padding: 9px 12px;
+    border: 1px solid #012b37;
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
+    flexDirection: column;
+    color: #012b37;
+`
 
 const Calendar = ({ data, header }: any) => (
-  <div style={{ height: 400 }}>
-    <h2 style={{color: "black"}}>{header}</h2>
+  <CalendarWrap>
+    <CalendarHeader>{header}</CalendarHeader>
     <ResponsiveCalendar
       data={data}
       from={data[0]["day"]}
@@ -21,30 +41,18 @@ const Calendar = ({ data, header }: any) => (
         left: 40,
       }}
       yearSpacing={40}
-      monthBorderColor="#ffffff"
+      monthBorderColor="#012b37"
       dayBorderWidth={2}
-      dayBorderColor="#ffffff"
+      dayBorderColor="#012b37"
       tooltip={e => {
         return (
-            <div
-                style={{
-                    background: "white",
-                    padding: "9px 12px",
-                    border: "1px solid #ccc",
-                    borderRadius: "25px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: "column",
-                    color: "black",
-                }}
-            >
+            <CalendarTooltip>
                 {e.day}: {e.value} {parseInt(e.value) > 1 ? 'orders' : 'order'}  
-            </div>
+            </CalendarTooltip>
         );
     }} 
     />
-  </div>
+  </CalendarWrap>
 );
 
 export default Calendar;
