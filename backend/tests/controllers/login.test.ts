@@ -1,14 +1,11 @@
-/*import supertest from "supertest";
+import supertest from "supertest";
 import app from "../../app";
 import config from "../../util/config";
 
-const request = supertest(app);*/
+const request = supertest(app);
 
 describe("Login route", () => {
-  test("test", () => {
-    expect(1).toEqual(1);
-  });
-  /*test("responds with a token and user data if credentials are correct", async () => {
+  test("responds with a token and user data if credentials are correct", async () => {
     const user = {
       email: config.ADMIN_EMAIL,
       password: config.ADMIN_PASSWORD,
@@ -35,5 +32,5 @@ describe("Login route", () => {
       "error",
       "invalid username or password"
     );
-  });*/
+  });
 });

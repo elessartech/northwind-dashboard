@@ -29,5 +29,5 @@
 | 3.10. | 7    | set up backend for preparing the data for charts and front to fetching and processing the data as well as got first charts properly visualized |
 | 8.10. | 3    | wrote more logics for statistics fetching related sql requests, distributed requests over to chart components  |
 | 10.10. | 5    | refactored statistics and home pages |
-| 14.10. | 7    | major refactoring, finalization |
-| total   | 119   | |
+| 14.10. | 8    | major refactoring, finalization |
+| total   | 120   | |
