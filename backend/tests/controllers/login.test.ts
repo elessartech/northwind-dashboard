@@ -5,9 +5,9 @@ import config from "../../util/config";
 const request = supertest(app);*/
 
 describe("Login route", () => {
-  test('test', () => {
-    expect(1).toEqual(1)
-  })
+  test("test", () => {
+    expect(1).toEqual(1);
+  });
   /*test("responds with a token and user data if credentials are correct", async () => {
     const user = {
       email: config.ADMIN_EMAIL,
