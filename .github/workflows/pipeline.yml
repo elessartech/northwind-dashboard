@@ -38,7 +38,10 @@ jobs:
         working-directory: ./backend
         run: npm run test
         env:
-          CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+          CONNECTION_URL: ${{ vars.CONNECTION_URL }}
+          ADMIN_NAME: ${{ vars.ADMIN_NAME }}
+          ADMIN_EMAIL: ${{ vars.ADMIN_EMAIL }}
+          ADMIN_PASSWORD: ${{ vars.ADMIN_PASSWORD }}
 
   tag_release:
     permissions: write-all
