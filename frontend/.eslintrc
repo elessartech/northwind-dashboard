@@ -12,7 +12,7 @@
   },
   "rules": {
     "@typescript-eslint/semi": ["error"],
-    "@typescript-eslint/no-unsafe-return": 1,
+    "@typescript-eslint/no-unsafe-return": 0,
     "@typescript-eslint/ban-types": 1,
     "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/restrict-template-expressions": "off",
