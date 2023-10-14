@@ -45,4 +45,8 @@ describe("Orders route", () => {
       Object.values(ordersSearchedByAvlShipped.body).length
     );
   });
+  test("individual order retrieval", async () => {
+    const ordersSearchedByAvl = await request(app).get("/api/orders/10248");
+    expect(Object.values(ordersSearchedByAvl.body).length).toBeGreaterThan(1);
+  });
 });

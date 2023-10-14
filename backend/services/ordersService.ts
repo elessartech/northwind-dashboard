@@ -29,7 +29,7 @@ const modifySingleOrderDataObj = (
   order: SingleOrder[]
 ): ModifiedSingleOrder => {
   const firstOrderedProduct = order[0];
-  let modifiedOrder: ModifiedSingleOrder = {
+  const modifiedOrder: ModifiedSingleOrder = {
     id: firstOrderedProduct.OrderID,
     orderDate: firstOrderedProduct.OrderDate,
     shippedDate: firstOrderedProduct.ShippedDate,

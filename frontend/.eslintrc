@@ -11,10 +11,10 @@
     "es6": true
   },
   "rules": {
-    "@typescript-eslint/semi": 0, // ["error"],
-    "@typescript-eslint/no-unsafe-return": "off",
-    "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/semi": ["error"],
+    "@typescript-eslint/no-unsafe-return": 1,
+    "@typescript-eslint/ban-types": 1,
+    "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/explicit-function-return-type": 0,
@@ -25,7 +25,7 @@
       { "argsIgnorePattern": "^_" }
     ],
     "@typescript-eslint/no-explicit-any": 1,
-    "@typescript-eslint/no-unsafe-assignment": 0,
+    "@typescript-eslint/no-unsafe-assignment": 1,
     "no-case-declarations": 0,
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0

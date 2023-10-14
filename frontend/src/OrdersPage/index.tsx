@@ -10,6 +10,10 @@ import OrdersList from "../components/OrdersList";
 import Spinner from "../components/Spinner";
 import styled from "styled-components";
 import Navigation from "../components/Navigation";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 const Wrapper = styled.section`
   margin: 5em auto 0 auto;
@@ -52,10 +56,15 @@ const OrdersPage = () => {
           `${apiBaseUrl}/orders`,
           { params: { productName: productName, shipped: shipped } }
         );
+        console.log(ordersListFromApi);
         dispatch(setOrdersList(ordersListFromApi));
         setLoading(false);
       } catch (e) {
-        console.error(e);
+        void NotificationManager.error(
+          "Error occured retrieving the data!",
+          "",
+          3000
+        );
       }
     };
     void fetchOrdersList();
@@ -69,6 +78,7 @@ const OrdersPage = () => {
           <Spinner />
         ) : (
           <React.Fragment>
+            <NotificationContainer />
             <SearchWrapper>
               <Search
                 productName={productName}

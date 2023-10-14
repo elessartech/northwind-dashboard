@@ -8,6 +8,11 @@ import { apiBaseUrl } from "../constants";
 import axios from "axios";
 import Pie from "../components/charts/Pie";
 import Calendar from "../components/charts/Calendar";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import { CalendarChartData, PieChartData } from "../types";
 
 const Wrapper = styled.section`
   margin: 5em auto 0 auto;
@@ -41,7 +46,7 @@ const StatisticsGridWrapper = styled.div`
 `;
 
 const StatisticsGridItem = styled.div`
-  padding: .25em 0;
+  padding: 0.25em 0;
   background: rgb(181, 65, 57);
   width: 100%;
   max-width: 750px;
@@ -84,13 +89,19 @@ const StatisticsPage = () => {
   const [
     numberOfOrdersThroughoutTimelineData,
     setNumberOfOrdersThroughoutTimelineData,
-  ] = useState<any>(null);
-  const [numberOfOrdersByCountry, setNumberOfOrdersByCountry] =
-    useState<any>(null);
-  const [mostSaledProduct, setMostSaledProduct] = useState<any>(null);
-  const [mostSaledProductPerItem, setMostSaledProductPerItem] =
-    useState<any>(null);
-  const [mostSaledCategory, setMostSaledCategory] = useState<any>(null);
+  ] = useState<CalendarChartData[] | undefined | null>(null);
+  const [numberOfOrdersByCountry, setNumberOfOrdersByCountry] = useState<
+    PieChartData[] | undefined | null
+  >(null);
+  const [mostSaledProduct, setMostSaledProduct] = useState<
+    PieChartData[] | undefined | null
+  >(null);
+  const [mostSaledProductPerItem, setMostSaledProductPerItem] = useState<
+    PieChartData[] | undefined | null
+  >(null);
+  const [mostSaledCategory, setMostSaledCategory] = useState<
+    PieChartData[] | undefined | null
+  >(null);
 
   const navigate = useNavigate();
 
@@ -103,48 +114,90 @@ const StatisticsPage = () => {
 
   useEffect(() => {
     if (!numberOfOrdersThroughoutTimelineData) {
-      void fetchChartData('number-of-orders-throughout-timeline').then(data => setNumberOfOrdersThroughoutTimelineData(data))
+      void fetchCalendarChartData("number-of-orders-throughout-timeline").then(
+        (data) => setNumberOfOrdersThroughoutTimelineData(data)
+      );
     }
     if (!numberOfOrdersByCountry) {
-      void fetchChartData('number-of-orders-by-country').then(data => setNumberOfOrdersByCountry(data))
+      void fetchPieChartData("number-of-orders-by-country").then((data) =>
+        setNumberOfOrdersByCountry(data)
+      );
     }
     if (!mostSaledProduct) {
-      void fetchChartData('most-saled-product').then(data => setMostSaledProduct(data))
+      void fetchPieChartData("most-saled-product").then((data) =>
+        setMostSaledProduct(data)
+      );
     }
     if (!mostSaledProductPerItem) {
-      void fetchChartData('most-saled-product-per-item').then(data => setMostSaledProductPerItem(data))
+      void fetchPieChartData("most-saled-product-per-item").then((data) =>
+        setMostSaledProductPerItem(data)
+      );
     }
     if (!mostSaledCategory) {
-      void fetchChartData('most-saled-category').then(data => setMostSaledCategory(data))
+      void fetchPieChartData("most-saled-category").then((data) =>
+        setMostSaledCategory(data)
+      );
     }
-  }, [numberOfOrdersThroughoutTimelineData, numberOfOrdersByCountry,mostSaledProduct, mostSaledProductPerItem, mostSaledCategory]);
+  }, [
+    numberOfOrdersThroughoutTimelineData,
+    numberOfOrdersByCountry,
+    mostSaledProduct,
+    mostSaledProductPerItem,
+    mostSaledCategory,
+  ]);
 
-  const fetchChartData = useCallback(async (url: string) => {
+  const fetchCalendarChartData = useCallback(async (url: string) => {
     try {
-      const { data: statisticsData } = await axios.get<any>(
+      const { data: statisticsData } = await axios.get<
+        CalendarChartData[] | null
+      >(`${apiBaseUrl}/statistics/${url}`);
+      return statisticsData;
+    } catch (e) {
+      void NotificationManager.error(
+        "Error occured retrieving the data!",
+        "",
+        3000
+      );
+    }
+  }, []);
+
+  const fetchPieChartData = useCallback(async (url: string) => {
+    try {
+      const { data: statisticsData } = await axios.get<PieChartData[] | null>(
         `${apiBaseUrl}/statistics/${url}`
       );
-      return statisticsData
+      return statisticsData;
     } catch (e) {
-      console.error(e);
+      void NotificationManager.error(
+        "Error occured retrieving the data!",
+        "",
+        3000
+      );
     }
-  }, [])
+  }, []);
 
   return (
     <React.Fragment>
       <Navigation authUserNavToBeDisplayed />
       <Wrapper>
+        <NotificationContainer />
         <StatisticsStatusIcon icon={faChartSimple}></StatisticsStatusIcon>
         <StatisticsStatus>Statistics</StatisticsStatus>
         <StatisticsGridWrapper>
           <StatisticsGridItem>
             {numberOfOrdersThroughoutTimelineData && (
-              <Calendar data={numberOfOrdersThroughoutTimelineData} header="Number of orders throughout the timeline" />
+              <Calendar
+                data={numberOfOrdersThroughoutTimelineData}
+                header="Number of orders throughout the timeline"
+              />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
             {numberOfOrdersByCountry && (
-              <Pie data={numberOfOrdersByCountry} header="Number of orders by country" />
+              <Pie
+                data={numberOfOrdersByCountry}
+                header="Number of orders by country"
+              />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>
@@ -154,7 +207,10 @@ const StatisticsPage = () => {
           </StatisticsGridItem>
           <StatisticsGridItem>
             {mostSaledProductPerItem && (
-              <Pie data={mostSaledProductPerItem} header="Most saled products per item"/>
+              <Pie
+                data={mostSaledProductPerItem}
+                header="Most saled products per item"
+              />
             )}
           </StatisticsGridItem>
           <StatisticsGridItem>

@@ -44,3 +44,20 @@ export interface ModifiedSingleOrder {
   shippedDate: string;
   products: OrderedProduct[];
 }
+
+export interface LoggedInUser {
+  name: string;
+  email: string;
+  token: string;
+}
+
+export interface CalendarChartData {
+  value: number;
+  day: string;
+}
+
+export interface PieChartData {
+  value: number;
+  label: string;
+  id: string;
+}

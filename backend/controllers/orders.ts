@@ -21,8 +21,10 @@ router.get(
     } else {
       orders = await orderModel.searchAllOrdersByProductName(productName || "");
     }
-    const modifiedOrderDataObj = ordersService.modifyOrderDataObj(orders);
-    res.json(modifiedOrderDataObj);
+    if (orders) {
+      const modifiedOrderDataObj = ordersService.modifyOrderDataObj(orders);
+      res.json(modifiedOrderDataObj);
+    }
   }
 );
 
@@ -39,9 +41,11 @@ router.get(
     const orderedProducts = await orderModel.findForIndividualOrderInfo(
       orderId
     );
-    const modifiedOrderDataObj =
-      ordersService.modifySingleOrderDataObj(orderedProducts);
-    res.json(modifiedOrderDataObj);
+    if (orderedProducts) {
+      const modifiedOrderDataObj =
+        ordersService.modifySingleOrderDataObj(orderedProducts);
+      res.json(modifiedOrderDataObj);
+    }
   }
 );
 

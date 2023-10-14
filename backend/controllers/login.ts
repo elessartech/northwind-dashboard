@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { findUser } from "../services/userService";
+import { LoggedInUser } from "../types";
 const router = express.Router();
 
 router.post("/", async (request: Request, response: Response) => {
@@ -28,9 +29,13 @@ router.post("/", async (request: Request, response: Response) => {
 
   const token = jwt.sign(userForToken, "SECRET");
 
-  return response
-    .status(200)
-    .send({ token, email: user.email, name: user.name });
+  const loggedUser: LoggedInUser = {
+    token,
+    email: user.email,
+    name: user.name,
+  };
+
+  return response.status(200).send(loggedUser);
 });
 
 export default router;

@@ -10,6 +10,10 @@ import { SingleOrder } from "../types";
 import { apiBaseUrl } from "../constants";
 import { Buffer } from "buffer";
 import { CSVLink } from "react-csv";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 const Wrapper = styled.section`
   margin: 5em auto 0 auto;
@@ -118,7 +122,11 @@ const OrderDetailsPage = () => {
         dispatch(setOrder(orderData));
         setLoading(false);
       } catch (e) {
-        console.error(e);
+        void NotificationManager.error(
+          "Error occured retrieving the data!",
+          "",
+          3000
+        );
       }
     };
     void fetchOrdersList();
@@ -128,6 +136,7 @@ const OrderDetailsPage = () => {
     <React.Fragment>
       <Navigation authUserNavToBeDisplayed />
       <Wrapper>
+        <NotificationContainer />
         <OrderStatusIcon icon={faCheckSquare}></OrderStatusIcon>
         <OrderStatus>Order #{order.id}</OrderStatus>
         <OrderInfoStatus>
