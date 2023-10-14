@@ -8,7 +8,7 @@
     "dev": "ts-node-dev index.ts",
     "lint": "eslint --ext .ts .",
     "prettier": "prettier --write .",
-    "test": "jest --coverage",
+    "test": "jest --coverage --watchAll=false",
     "build": "tsc"
   },
   "dependencies": {
