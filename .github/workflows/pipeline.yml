@@ -37,6 +37,8 @@ jobs:
       - name: test back
         working-directory: ./backend
         run: npm run test
+        env:
+          CONNECTION_URL: ${{ vars.CONNECTION_URL }}
 
   tag_release:
     permissions: write-all
