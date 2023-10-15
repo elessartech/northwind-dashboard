@@ -1,5 +1,7 @@
 # Northwind Dashboard
 
+[![Testing pipeline](https://github.com/elessartech/northwind-dashboard/actions/workflows/pipeline.yml/badge.svg)](https://github.com/elessartech/northwind-dashboard/actions/workflows/pipeline.yml)
+
 ## Deployment
 
 ### Frontend
