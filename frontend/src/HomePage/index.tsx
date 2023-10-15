@@ -205,16 +205,16 @@ const HomePage = () => {
             <InfoIconWrapper>
               <InfoIcon height={250} width={250} icon={faWind} />
             </InfoIconWrapper>
-            <InfoHeader>
-              Northwind: Orders & Statistics
-            </InfoHeader>
+            <InfoHeader>Northwind: Orders & Statistics</InfoHeader>
             <InfoDescr>
               Tracking, analyzing, growing has been made easy!
             </InfoDescr>
           </InfoWrapper>
           <LoginFormWrapper>
             <LoginFormHeader>Get started</LoginFormHeader>
-            <LoginFormSubHeader>Authorize your administrator account now</LoginFormSubHeader>
+            <LoginFormSubHeader>
+              Authorize your administrator account now
+            </LoginFormSubHeader>
             <NotificationContainer />
             <LoginFormInputContainer>
               <LoginFormInputLabel htmlFor="EmailInput">
