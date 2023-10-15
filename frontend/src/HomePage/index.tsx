@@ -206,16 +206,15 @@ const HomePage = () => {
               <InfoIcon height={250} width={250} icon={faWind} />
             </InfoIconWrapper>
             <InfoHeader>
-              Let us help you run your freelance business.
+              Northwind: Orders & Statistics
             </InfoHeader>
             <InfoDescr>
-              Our registration process is easy, takes no more than 10 minutes to
-              complete.
+              Tracking, analyzing, growing has been made easy!
             </InfoDescr>
           </InfoWrapper>
           <LoginFormWrapper>
             <LoginFormHeader>Get started</LoginFormHeader>
-            <LoginFormSubHeader>Authorize your account now</LoginFormSubHeader>
+            <LoginFormSubHeader>Authorize your administrator account now</LoginFormSubHeader>
             <NotificationContainer />
             <LoginFormInputContainer>
               <LoginFormInputLabel htmlFor="EmailInput">

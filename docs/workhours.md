@@ -30,4 +30,5 @@
 | 8.10. | 3    | wrote more logics for statistics fetching related sql requests, distributed requests over to chart components  |
 | 10.10. | 5    | refactored statistics and home pages |
 | 14.10. | 8    | major refactoring, finalization |
-| total   | 120   | |
+| 15.10. | 3    | testing, deployment, small polishing, finalization |
+| total   | 123   | |

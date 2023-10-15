@@ -4,11 +4,12 @@
 
 ### Frontend
 
-https://nortwind-frontend.onrender.com
+https://northwind-frontend.onrender.com
 
 ### Backend
 
 https://nortwind-backend.onrender.com
+
 
 ## Admin credentials
 
