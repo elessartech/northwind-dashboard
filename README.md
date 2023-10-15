@@ -143,8 +143,12 @@ Environment variables can be defined in `.env`-files in both `backend` and `fron
 
 | Key | Value |
 | ------ | ------ |
-| DATABASE_URL  | {PATH_TO_DB} |
+| DATABASE_URL  | {PATH_TO_SQL_DB} |
 | PORT  | {PORT} |
+| CONNECTION_URL  | {PATH_TO_MONGO_DB} |
+| ADMIN_NAME  | {NAME_OF_ADMIN_USER} |
+| ADMIN_EMAIL  | {EMAIL_OF_ADMIN_USER} |
+| ADMIN_PASSWORD  | {PASSWORD_OF_ADMIN_USER} |
 
 ### Frontend
 
@@ -155,12 +159,12 @@ Environment variables can be defined in `.env`-files in both `backend` and `fron
 ## Launch
 
 - Install required packages using corresponding commands for [frontend](https://github.com/elessartech/kesko-assignment#install-required-packages-1) and [backend](https://github.com/elessartech/kesko-assignment#install-required-packages).
-- No need to create `.env`-files, since config files are adjusted to provide relevant values for local launch. 
+- Create `.env`-files with corresponding variables defined from the table above in the root of `frontend` and `backend` directories. 
 - Run backend via command `yarn start` in one terminal window.
 - Run frontend via command `yarn start` in another terminal window.
 - Head over to http://localhost:3000/ in your browser.
 
-## Interface 
+## Interface
 
 ### Desktop
 
