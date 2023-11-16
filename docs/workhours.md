@@ -31,4 +31,5 @@
 | 10.10. | 5    | refactored statistics and home pages |
 | 14.10. | 8    | major refactoring, finalization |
 | 15.10. | 3    | testing, deployment, small polishing, finalization |
-| total   | 123   | |
+| 15.10. | 1    | debugging, redeployment |
+| total   | 124   | |

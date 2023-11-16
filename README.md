@@ -6,11 +6,11 @@
 
 ### Frontend
 
-https://northwind-frontend.onrender.com
+[https://northwind-dashboard.vercel.app](https://northwind-dashboard.vercel.app)
 
 ### Backend
 
-https://nortwind-backend.onrender.com
+[https://nortwind-backend.onrender.com](https://nortwind-backend.onrender.com/)
 
 
 ## Admin credentials
