@@ -1,25 +1,5 @@
 # Northwind Dashboard
 
-[![Testing pipeline](https://github.com/elessartech/northwind-dashboard/actions/workflows/pipeline.yml/badge.svg)](https://github.com/elessartech/northwind-dashboard/actions/workflows/pipeline.yml)
-
-## Deployment
-
-### Frontend
-
-[https://northwind-dashboard.vercel.app](https://northwind-dashboard.vercel.app)
-
-### Backend
-
-[https://nortwind-backend.onrender.com](https://nortwind-backend.onrender.com/)
-
-
-## Admin credentials
-
-One can log in the application using the following credentials:
-
-- Email: admin@test.com
-- Password: test
-
 ## Tech stack
 
 The app is written using the following technologies:
